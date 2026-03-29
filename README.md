@@ -31,6 +31,6 @@ make
 \
 \
 an then, as root or with sudo,
-\ 
+\
 make install
 
