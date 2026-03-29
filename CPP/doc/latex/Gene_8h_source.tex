@@ -1,0 +1,59 @@
+\doxysection{Gene.\+h}
+\hypertarget{Gene_8h_source}{}\label{Gene_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GENE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GENE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}debugging.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}auxbin.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}colors.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ @defgroup\ ConstantsForGenes}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ConstantsForGenes_ga8320e5a65023ddb091a628aa7a8a47c9}{max\_codeword}}=500;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ConstantsForGenes_ga0678b6da56b9270c4c24c3567d58fe55}{NumCat}}=2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{group__ConstantsForGenes_gae2b3aaa6c8aabbdc2a9a3ab5a0a77677}{catnames}}[\mbox{\hyperlink{group__ConstantsForGenes_ga0678b6da56b9270c4c24c3567d58fe55}{NumCat}}]=\{\textcolor{stringliteral}{"{}current"{}},\textcolor{stringliteral}{"{}base"{}}\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ConstantsForGenes_ga5814a6d64e661fb72fa1f8b486acf5a6}{NumDesc}}=2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{group__ConstantsForGenes_ga44e5767544cf39e5b7843fda3700aa24}{descnames}}[\mbox{\hyperlink{group__ConstantsForGenes_ga5814a6d64e661fb72fa1f8b486acf5a6}{NumDesc}}]=\{\textcolor{stringliteral}{"{}gene"{}},\textcolor{stringliteral}{"{}negative\_control"{}}\};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{const}\ std::string\ NoName=\textcolor{stringliteral}{"{}Name\_UNKNOWN"{}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{const}\ std::string\ NoId=\textcolor{stringliteral}{"{}Id\_UNKNOWN"{}};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ NoCode=-\/1;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ Forward\ declaration,\ since\ we\ need\ GenePanel\ to\ be\ a\ friend\ class\ of\ Gene}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGenePanel}{GenePanel}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGene_afc7912459dbef68e7165144fe7b1807d}{Gene}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{classGene_afc7912459dbef68e7165144fe7b1807d}{Gene}}(\textcolor{keywordtype}{int}\ cw,\textcolor{keywordtype}{int}\ gc,std::string\ cat,std::string\ gid,std::string\ gname,std::string\ gd,\textcolor{keywordtype}{bool}\ \&err);}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{classGene_afc7912459dbef68e7165144fe7b1807d}{Gene}}(InputBufferedFile\ \&f);}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGene_a5b2ea0cc142d67a27ba17d493b0a04e7}{GetCodeword}}()\ \{\ \textcolor{keywordflow}{return}(codeword);\ \};}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGene_a1a348cdca335eb9c2dc13b8d38beef54}{GetCoverage}}()\ \{\ \textcolor{keywordflow}{return}(gene\_coverage);\ \};}
+\DoxyCodeLine{00068\ \ \ std::string\ \mbox{\hyperlink{classGene_a6eaf4bd358154029fa30bed780937575}{GetCat}}()\ \{\ \textcolor{keywordflow}{return}(\mbox{\hyperlink{group__ConstantsForGenes_gae2b3aaa6c8aabbdc2a9a3ab5a0a77677}{catnames}}[gene\_cat]);\ \};}
+\DoxyCodeLine{00073\ \ \ std::string\ \mbox{\hyperlink{classGene_ad2a760dbd3839bed3bc415fdef818d0f}{GetId}}()\ \{\ \textcolor{keywordflow}{return}(\textcolor{keywordtype}{id});\ \};}
+\DoxyCodeLine{00078\ \ \ std::string\ \mbox{\hyperlink{classGene_aaa1c3153421cbedfe507b1e7b9a10af8}{GetName}}()\ \{\ \textcolor{keywordflow}{return}(name);\ \};}
+\DoxyCodeLine{00083\ \ \ std::string\ \mbox{\hyperlink{classGene_a07ed6fe667ba9356a78d595b93cf0b26}{GetDesc}}()\ \{\ \textcolor{keywordflow}{return}(\mbox{\hyperlink{group__ConstantsForGenes_ga44e5767544cf39e5b7843fda3700aa24}{descnames}}[gene\_desc]);\ \};}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGene_a3e5efe3bc0c51d4181ec0cf5c185efbf}{IsGene}}()\ \{\ \textcolor{keywordflow}{return}(\mbox{\hyperlink{group__ConstantsForGenes_ga44e5767544cf39e5b7843fda3700aa24}{descnames}}[gene\_desc]==\textcolor{stringliteral}{"{}gene"{}});\ \};}
+\DoxyCodeLine{00094\ \ \ std::string\ \mbox{\hyperlink{classGene_a4eff447698be861df1f03e54e77bbea0}{GetAll}}(\textcolor{keywordtype}{char}\ sep=\textcolor{charliteral}{','});}
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classGenePanel}{GenePanel}};}
+\DoxyCodeLine{00096\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{int}\ GetCatNum()\ \{\ \textcolor{keywordflow}{return}(gene\_cat);\ \};}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{int}\ GetDescNum()\ \{\ \textcolor{keywordflow}{return}(gene\_desc);\ \};}
+\DoxyCodeLine{00099\ \ \ RGB\_color\ GetColor()\ \{\ \textcolor{keywordflow}{return}(color);\ \};}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ SetColor(\textcolor{keyword}{const}\ RGB\_color\ \&c)\ \{\ color=c;\ \};}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{int}\ codeword;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{int}\ gene\_coverage;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{int}\ gene\_cat;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ std::string\ id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ std::string\ name;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{int}\ gene\_desc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ RGB\_color\ color;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ SaveAsBinary(OutputBufferedFile\ \&f);}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

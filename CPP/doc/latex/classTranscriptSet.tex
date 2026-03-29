@@ -1,0 +1,322 @@
+\doxysection{Transcript\+Set Class Reference}
+\hypertarget{classTranscriptSet}{}\label{classTranscriptSet}\index{TranscriptSet@{TranscriptSet}}
+
+
+\doxylink{classTranscriptSet}{Transcript\+Set} class.  
+
+
+
+
+{\ttfamily \#include "{}Transcriptset.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTranscriptSet_a992b33ddced04dbc00a3208927a4aa00}{Transcript\+Set}} (std\+::string tr\+\_\+file\+\_\+name, bool check=false)
+\item 
+void \mbox{\hyperlink{classTranscriptSet_a7f45bf96227081a315210820e47f0628}{Show}} (std\+::ostream \&out, char sep=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Procedure to show all the data from the transcript set in .csv format. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classTranscriptSet_a1511af5905211662d3670c94311eb423}{Get\+Num\+Tr}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of transcription events in the transcript set. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscriptSet_a9e0c539a3a98e2d667438c91fcc7502f}{GetX}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the x coordinate of event with given identifier, in micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscriptSet_ad2912754060ddcc17a108ca33641ef4d}{GetY}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the y coordinate of event with given identifier, in micrometers. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscriptSet_ab03f573cb904e914aa6c138f51a1a9f6}{Get\+FOV}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the identifier of the area in which an event with given identifier happened. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f}{Get\+Cell\+Id}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the identifier of the cell inside which an event with given identifier happened, or UNASSIGNED if outside any cell. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTranscriptSet_a92cb4b4fa2a2a76dca2b21b8f7df68ae}{Inside\+Cell}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to check if an event with given identifier happened inside any cell or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTranscriptSet_aa6a991173d1aa914eea222c013bcda8f}{Overlap\+Nucleus}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to check if an event with given identifier happened inside any cell nucleus. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTranscriptSet_a242dace475ffeaeabce20b8d030dac38}{Get\+Qv}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the quality index of the vent with given identifier. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTranscriptSet_ada97103ee00f8cad683fae816035f4f5}{Get\+CW}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the codeword of the gene or clonotype the originated the event with given identifier. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscriptSet_a4cf19ad73c1fde1458c415e016db4cd5}{Get\+DNuc}} (size\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Function to return the distance to the closest nucleus of the event with given identifier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTranscriptSet_a7d3468850e6b854e96f927df756c4cf9}{Save\+As\+Binary\+With\+Debug}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the cell set in binary format in a file debugging the writing bytes process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTranscriptSet_a531e46a25b133dd3b6bd38f968bf9035}{Save\+As\+Binary}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the cell set in binary format in a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned short \mbox{\hyperlink{classTranscriptSet_a07b7c7bb514dfa9b4142320e12053c20}{default\+\_\+chunksize\+\_\+for\+\_\+\+Transcript\+Set}} =4096
+\item 
+const std\+::string \mbox{\hyperlink{classTranscriptSet_a3701c963193f7f84758f8443027604bb}{Unassigned\+Cell\+Code}} ="{}UNASSIGNED"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classTranscriptSet}{Transcript\+Set} class. 
+
+Class \doxylink{classTranscriptSet}{Transcript\+Set}\+: a class to hold all information about a set of transcription events read from the event description file in .csv or binary format 
+
+\label{doc-constructors}
+\Hypertarget{classTranscriptSet_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTranscriptSet_a992b33ddced04dbc00a3208927a4aa00}\index{TranscriptSet@{TranscriptSet}!TranscriptSet@{TranscriptSet}}
+\index{TranscriptSet@{TranscriptSet}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{TranscriptSet()}{TranscriptSet()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a992b33ddced04dbc00a3208927a4aa00} 
+Transcript\+Set\+::\+Transcript\+Set (\begin{DoxyParamCaption}\item[{std\+::string}]{tr\+\_\+file\+\_\+name}{, }\item[{bool}]{check}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+Constructor that takes the requested binary or .csv cell description file, reads from it all relevant information and stores it inside the class. File type (binary or .csv) is determined from its extension. 
+\begin{DoxyParams}{Parameters}
+{\em tr\+\_\+file\+\_\+name} & string\+: The name (if accessible) or complete path of the .csv or binary file \\
+\hline
+{\em check} & bool\+: true to check that there are no any transcritps with duplicate identifiers. This check is slow, so the parameter is by default false. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classTranscriptSet_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f}\index{TranscriptSet@{TranscriptSet}!GetCellId@{GetCellId}}
+\index{GetCellId@{GetCellId}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetCellId()}{GetCellId()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f} 
+std\+::string Transcript\+Set\+::\+Get\+Cell\+Id (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the identifier of the cell inside which an event with given identifier happened, or UNASSIGNED if outside any cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string A cell identifier 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_ada97103ee00f8cad683fae816035f4f5}\index{TranscriptSet@{TranscriptSet}!GetCW@{GetCW}}
+\index{GetCW@{GetCW}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetCW()}{GetCW()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_ada97103ee00f8cad683fae816035f4f5} 
+int Transcript\+Set\+::\+Get\+CW (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the codeword of the gene or clonotype the originated the event with given identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The codeword of the gene or clonotype 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a4cf19ad73c1fde1458c415e016db4cd5}\index{TranscriptSet@{TranscriptSet}!GetDNuc@{GetDNuc}}
+\index{GetDNuc@{GetDNuc}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetDNuc()}{GetDNuc()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a4cf19ad73c1fde1458c415e016db4cd5} 
+float Transcript\+Set\+::\+Get\+DNuc (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the distance to the closest nucleus of the event with given identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The distance to the closest nucleus in micrometers 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_ab03f573cb904e914aa6c138f51a1a9f6}\index{TranscriptSet@{TranscriptSet}!GetFOV@{GetFOV}}
+\index{GetFOV@{GetFOV}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetFOV()}{GetFOV()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_ab03f573cb904e914aa6c138f51a1a9f6} 
+std\+::string Transcript\+Set\+::\+Get\+FOV (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the identifier of the area in which an event with given identifier happened. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string An area indentifier 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a1511af5905211662d3670c94311eb423}\index{TranscriptSet@{TranscriptSet}!GetNumTr@{GetNumTr}}
+\index{GetNumTr@{GetNumTr}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetNumTr()}{GetNumTr()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a1511af5905211662d3670c94311eb423} 
+size\+\_\+t Transcript\+Set\+::\+Get\+Num\+Tr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of transcription events in the transcript set. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t\+: the number of transcription events currently in the transcript set 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a242dace475ffeaeabce20b8d030dac38}\index{TranscriptSet@{TranscriptSet}!GetQv@{GetQv}}
+\index{GetQv@{GetQv}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetQv()}{GetQv()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a242dace475ffeaeabce20b8d030dac38} 
+int Transcript\+Set\+::\+Get\+Qv (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the quality index of the vent with given identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The quality index, an integer in 0..40 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a9e0c539a3a98e2d667438c91fcc7502f}\index{TranscriptSet@{TranscriptSet}!GetX@{GetX}}
+\index{GetX@{GetX}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a9e0c539a3a98e2d667438c91fcc7502f} 
+float Transcript\+Set\+::\+GetX (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the x coordinate of event with given identifier, in micrometers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float x-\/value 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_ad2912754060ddcc17a108ca33641ef4d}\index{TranscriptSet@{TranscriptSet}!GetY@{GetY}}
+\index{GetY@{GetY}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_ad2912754060ddcc17a108ca33641ef4d} 
+float Transcript\+Set\+::\+GetY (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the y coordinate of event with given identifier, in micrometers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float y-\/value 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a92cb4b4fa2a2a76dca2b21b8f7df68ae}\index{TranscriptSet@{TranscriptSet}!InsideCell@{InsideCell}}
+\index{InsideCell@{InsideCell}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{InsideCell()}{InsideCell()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a92cb4b4fa2a2a76dca2b21b8f7df68ae} 
+bool Transcript\+Set\+::\+Inside\+Cell (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to check if an event with given identifier happened inside any cell or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the event happened inside any cell (including inside its nucleus) or false if not 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_aa6a991173d1aa914eea222c013bcda8f}\index{TranscriptSet@{TranscriptSet}!OverlapNucleus@{OverlapNucleus}}
+\index{OverlapNucleus@{OverlapNucleus}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{OverlapNucleus()}{OverlapNucleus()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_aa6a991173d1aa914eea222c013bcda8f} 
+bool Transcript\+Set\+::\+Overlap\+Nucleus (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to check if an event with given identifier happened inside any cell nucleus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & size\+\_\+t The event identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the event happened inside any cell nucleus or false if not (even if outside any cell) 
+\end{DoxyReturn}
+\Hypertarget{classTranscriptSet_a531e46a25b133dd3b6bd38f968bf9035}\index{TranscriptSet@{TranscriptSet}!SaveAsBinary@{SaveAsBinary}}
+\index{SaveAsBinary@{SaveAsBinary}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinary()}{SaveAsBinary()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a531e46a25b133dd3b6bd38f968bf9035} 
+void Transcript\+Set\+::\+Save\+As\+Binary (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the cell set in binary format in a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTranscriptSet_a7d3468850e6b854e96f927df756c4cf9}\index{TranscriptSet@{TranscriptSet}!SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}}
+\index{SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinaryWithDebug()}{SaveAsBinaryWithDebug()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a7d3468850e6b854e96f927df756c4cf9} 
+void Transcript\+Set\+::\+Save\+As\+Binary\+With\+Debug (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the cell set in binary format in a file debugging the writing bytes process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTranscriptSet_a7f45bf96227081a315210820e47f0628}\index{TranscriptSet@{TranscriptSet}!Show@{Show}}
+\index{Show@{Show}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a7f45bf96227081a315210820e47f0628} 
+void Transcript\+Set\+::\+Show (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out}{, }\item[{char}]{sep}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}}\end{DoxyParamCaption})}
+
+
+
+Procedure to show all the data from the transcript set in .csv format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & \&ostream Reference to an output stream to show the information, like cout, cerr or an opened ofstream object \\
+\hline
+{\em sep} & char\+: character to be used as .csv separator, by default a comma \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classTranscriptSet_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTranscriptSet_a07b7c7bb514dfa9b4142320e12053c20}\index{TranscriptSet@{TranscriptSet}!default\_chunksize\_for\_TranscriptSet@{default\_chunksize\_for\_TranscriptSet}}
+\index{default\_chunksize\_for\_TranscriptSet@{default\_chunksize\_for\_TranscriptSet}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{default\_chunksize\_for\_TranscriptSet}{default\_chunksize\_for\_TranscriptSet}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a07b7c7bb514dfa9b4142320e12053c20} 
+const unsigned short Transcript\+Set\+::default\+\_\+chunksize\+\_\+for\+\_\+\+Transcript\+Set =4096}
+
+Size of memory chunck to save the transcript set. Even 4 GB is not enough, but it depends on the memory of your machine \Hypertarget{classTranscriptSet_a3701c963193f7f84758f8443027604bb}\index{TranscriptSet@{TranscriptSet}!UnassignedCellCode@{UnassignedCellCode}}
+\index{UnassignedCellCode@{UnassignedCellCode}!TranscriptSet@{TranscriptSet}}
+\doxysubsubsection{\texorpdfstring{UnassignedCellCode}{UnassignedCellCode}}
+{\footnotesize\ttfamily \label{classTranscriptSet_a3701c963193f7f84758f8443027604bb} 
+const std\+::string Transcript\+Set\+::\+Unassigned\+Cell\+Code ="{}UNASSIGNED"{}}
+
+This is the string used in the csv files to indicate that the transcript is outside any cell. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Transcriptset.\+h\item 
+Transcriptset.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,313 @@
+\doxysection{Cell Class Reference}
+\hypertarget{classCell}{}\label{classCell}\index{Cell@{Cell}}
+
+
+\doxylink{classCell}{Cell} class.  
+
+
+
+
+{\ttfamily \#include "{}Cell.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCell_aa5f8a936086d8fe47d0caf914e82419a}{Cell}} (std\+::string id, float x, float y, int trc, int cpc, int ccc, int ucc, int dcc, int tc, float area, float nuc\+\_\+area, bool \&err)
+\item 
+\mbox{\hyperlink{classCell_a01073942b37b99d27b5196abb1b02592}{Cell}} (Input\+Buffered\+File \&f, size\+\_\+t \&nbc, size\+\_\+t \&nnc)
+\item 
+std\+::string \mbox{\hyperlink{classCell_a7dbc6a1bd2653c7316b1d2a2b7505a7d}{Get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the unique cell identifier. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCell_a559281b2db6fdcd13def27cc1d62777a}{GetX}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the x coordinate of the cell centroid in micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCell_a9bd0aafb55c6e99d36bcb2d97ffb299e}{GetY}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the y coordinate of the cell centroid in micrometers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_ab8758be8ca2c87f23200d2328acde7f0}{Get\+TranscriptC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of transcription events happened inside the cell. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_a6ce398292da5e73c769f850d8f955a14}{Get\+Control\+ProbeC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of control probe events happened inside the cell. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_a48fee729df8a77f747975e914a279b29}{Get\+Control\+CodewordC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of events corresponding to control codewords happened inside the cell. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_aaa160f8e1514226dcaa44229c4a224fe}{Get\+Unassigned\+CodewordC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of events happened inside the cell not assigned to any known codeword. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_a54844cb7b19f3e3094ad0e92e2c7f43c}{Get\+Deprecated\+CodewordC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of events happened inside the cell assigned to deprecated codeword. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_a2a77ee13375f0dfa39e38465725da1cf}{Get\+TotalC}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the total number of events happened inside the cell. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCell_ae92302522c94962781e80aae79b21ee5}{Get\+Area}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the cell area in sq. micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCell_ac35ec9e9b0dda0026846b50364eb41c1}{Get\+Nuc\+Area}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the cell nucleus area in sq. micrometers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCell_a47f7e3b95be476d2b843258bc8a3c2ab}{Get\+Cluster}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of the cluster the cell is assigned to. \end{DoxyCompactList}\item 
+\Hypertarget{classCell_a114e2f3a029907ff08c0080085a45b80}\label{classCell_a114e2f3a029907ff08c0080085a45b80} 
+void {\bfseries Set\+Cluster} (int clc)
+\begin{DoxyCompactList}\small\item\em Procedure to set the number of the cluster the cell is assigned to. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCell_ae48d1e742f34e5cb8b74ce40a724154f}{Get\+Area\+Ratio}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the ratio between cell nucleus area and cell area, a real number in \mbox{]}0..1\mbox{[}. Used as suggestive indicator of tumoral character. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCell_aebb8d3b91ee80e2e8ee81aec6d31b766}{Get\+All}} (char csep, bool getclus)
+\begin{DoxyCompactList}\small\item\em Function to return all the information about a cell as a text line with fields separated by the requested character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classCell_a41bbc7c555196516d242f1ac185e3b73}\label{classCell_a41bbc7c555196516d242f1ac185e3b73} 
+friend {\bfseries Cell\+Set}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classCell}{Cell} class. 
+
+Class \doxylink{classCell}{Cell}\+: a class to hold all information about a cell read from a spatial transcriptomics cell description file in .csv or binary format 
+
+\label{doc-constructors}
+\Hypertarget{classCell_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCell_aa5f8a936086d8fe47d0caf914e82419a}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classCell_aa5f8a936086d8fe47d0caf914e82419a} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{std\+::string}]{id}{, }\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{int}]{trc}{, }\item[{int}]{cpc}{, }\item[{int}]{ccc}{, }\item[{int}]{ucc}{, }\item[{int}]{dcc}{, }\item[{int}]{tc}{, }\item[{float}]{area}{, }\item[{float}]{nuc\+\_\+area}{, }\item[{bool \&}]{err}{}\end{DoxyParamCaption})}
+
+Constructor that reads all relevant information from the .csv file and store it inside the class after doing some basic sanity checks 
+\begin{DoxyParams}{Parameters}
+{\em id} & string\+: the cell identifier \\
+\hline
+{\em x} & float\+: x-\/position of cell centroid in micrometers \\
+\hline
+{\em y} & float\+: y-\/position of cell centroid in micrometers \\
+\hline
+{\em trc} & int\+: Number of transcript counts inside cell \\
+\hline
+{\em cpc} & int\+: Number of control probe counts inside cell \\
+\hline
+{\em ccc} & int\+: Number of control codeword counts inside cell \\
+\hline
+{\em ucc} & int\+: Number of unassigned codeword counts inside cell \\
+\hline
+{\em dcc} & int\+: Number of deprecated codeword counts inside cell \\
+\hline
+{\em tc} & int\+: Total number of counts inside cell. It must be trc+cpc+ucc+dcc \\
+\hline
+{\em area} & float\+: \doxylink{classCell}{Cell} area in sq. micrometers \\
+\hline
+{\em nuc\+\_\+area} & float\+: Nucleus cell area in sq. micrometers \\
+\hline
+{\em err} & \&bool\+: Test variable that returns with true if all values pass the checks and cell has been constructed and false if not. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCell_a01073942b37b99d27b5196abb1b02592}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classCell_a01073942b37b99d27b5196abb1b02592} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{Input\+Buffered\+File \&}]{f}{, }\item[{size\+\_\+t \&}]{nbc}{, }\item[{size\+\_\+t \&}]{nnc}{}\end{DoxyParamCaption})}
+
+Constructor that read all relevant information from a binary opened Input\+Bufered\+File 
+\begin{DoxyParams}{Parameters}
+{\em f} & Input\+Bufered\+File Reference to a previously opened binary file \\
+\hline
+{\em nbc} & \&size\+\_\+t Variable to count the number of cell boundaries read from the binary file. Passed as reference to be updated \\
+\hline
+{\em nnc} & \&size\+\_\+t Variable to count the number of nucleus boundaries read from the binary file. Passed as reference to be updated \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classCell_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCell_aebb8d3b91ee80e2e8ee81aec6d31b766}\index{Cell@{Cell}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetAll()}{GetAll()}}
+{\footnotesize\ttfamily \label{classCell_aebb8d3b91ee80e2e8ee81aec6d31b766} 
+string Cell\+::\+Get\+All (\begin{DoxyParamCaption}\item[{char}]{csep}{, }\item[{bool}]{getclus}{}\end{DoxyParamCaption})}
+
+
+
+Function to return all the information about a cell as a text line with fields separated by the requested character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csep} & char\+: The separation character \\
+\hline
+{\em getclus} & bool\+: true to indicate that the attributed cluster number should be written, too. False if not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string\+: The line with the information (without any final carriage return/new line character) 
+\end{DoxyReturn}
+\Hypertarget{classCell_ae92302522c94962781e80aae79b21ee5}\index{Cell@{Cell}!GetArea@{GetArea}}
+\index{GetArea@{GetArea}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetArea()}{GetArea()}}
+{\footnotesize\ttfamily \label{classCell_ae92302522c94962781e80aae79b21ee5} 
+float Cell\+::\+Get\+Area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the cell area in sq. micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float Area of the cell 
+\end{DoxyReturn}
+\Hypertarget{classCell_ae48d1e742f34e5cb8b74ce40a724154f}\index{Cell@{Cell}!GetAreaRatio@{GetAreaRatio}}
+\index{GetAreaRatio@{GetAreaRatio}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetAreaRatio()}{GetAreaRatio()}}
+{\footnotesize\ttfamily \label{classCell_ae48d1e742f34e5cb8b74ce40a724154f} 
+float Cell\+::\+Get\+Area\+Ratio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the ratio between cell nucleus area and cell area, a real number in \mbox{]}0..1\mbox{[}. Used as suggestive indicator of tumoral character. 
+
+\begin{DoxyReturn}{Returns}
+float\+: Quotient nucleus cell area / cell area 
+\end{DoxyReturn}
+\Hypertarget{classCell_a47f7e3b95be476d2b843258bc8a3c2ab}\index{Cell@{Cell}!GetCluster@{GetCluster}}
+\index{GetCluster@{GetCluster}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetCluster()}{GetCluster()}}
+{\footnotesize\ttfamily \label{classCell_a47f7e3b95be476d2b843258bc8a3c2ab} 
+int Cell\+::\+Get\+Cluster (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of the cluster the cell is assigned to. 
+
+\begin{DoxyReturn}{Returns}
+int Number of the attributed cluster 
+\end{DoxyReturn}
+\Hypertarget{classCell_a48fee729df8a77f747975e914a279b29}\index{Cell@{Cell}!GetControlCodewordC@{GetControlCodewordC}}
+\index{GetControlCodewordC@{GetControlCodewordC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetControlCodewordC()}{GetControlCodewordC()}}
+{\footnotesize\ttfamily \label{classCell_a48fee729df8a77f747975e914a279b29} 
+int Cell\+::\+Get\+Control\+CodewordC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of events corresponding to control codewords happened inside the cell. 
+
+\begin{DoxyReturn}{Returns}
+int Number of events corresponding to codewords 
+\end{DoxyReturn}
+\Hypertarget{classCell_a6ce398292da5e73c769f850d8f955a14}\index{Cell@{Cell}!GetControlProbeC@{GetControlProbeC}}
+\index{GetControlProbeC@{GetControlProbeC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetControlProbeC()}{GetControlProbeC()}}
+{\footnotesize\ttfamily \label{classCell_a6ce398292da5e73c769f850d8f955a14} 
+int Cell\+::\+Get\+Control\+ProbeC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of control probe events happened inside the cell. 
+
+\begin{DoxyReturn}{Returns}
+int Number of control probe events 
+\end{DoxyReturn}
+\Hypertarget{classCell_a54844cb7b19f3e3094ad0e92e2c7f43c}\index{Cell@{Cell}!GetDeprecatedCodewordC@{GetDeprecatedCodewordC}}
+\index{GetDeprecatedCodewordC@{GetDeprecatedCodewordC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetDeprecatedCodewordC()}{GetDeprecatedCodewordC()}}
+{\footnotesize\ttfamily \label{classCell_a54844cb7b19f3e3094ad0e92e2c7f43c} 
+int Cell\+::\+Get\+Deprecated\+CodewordC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of events happened inside the cell assigned to deprecated codeword. 
+
+\begin{DoxyReturn}{Returns}
+int Number of deprecated events 
+\end{DoxyReturn}
+\Hypertarget{classCell_a7dbc6a1bd2653c7316b1d2a2b7505a7d}\index{Cell@{Cell}!GetId@{GetId}}
+\index{GetId@{GetId}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{classCell_a7dbc6a1bd2653c7316b1d2a2b7505a7d} 
+std\+::string Cell\+::\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the unique cell identifier. 
+
+\begin{DoxyReturn}{Returns}
+string The cell id 
+\end{DoxyReturn}
+\Hypertarget{classCell_ac35ec9e9b0dda0026846b50364eb41c1}\index{Cell@{Cell}!GetNucArea@{GetNucArea}}
+\index{GetNucArea@{GetNucArea}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetNucArea()}{GetNucArea()}}
+{\footnotesize\ttfamily \label{classCell_ac35ec9e9b0dda0026846b50364eb41c1} 
+float Cell\+::\+Get\+Nuc\+Area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the cell nucleus area in sq. micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float Area of the cell nucleus 
+\end{DoxyReturn}
+\Hypertarget{classCell_a2a77ee13375f0dfa39e38465725da1cf}\index{Cell@{Cell}!GetTotalC@{GetTotalC}}
+\index{GetTotalC@{GetTotalC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetTotalC()}{GetTotalC()}}
+{\footnotesize\ttfamily \label{classCell_a2a77ee13375f0dfa39e38465725da1cf} 
+int Cell\+::\+Get\+TotalC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the total number of events happened inside the cell. 
+
+\begin{DoxyReturn}{Returns}
+int Total number of events 
+\end{DoxyReturn}
+\Hypertarget{classCell_ab8758be8ca2c87f23200d2328acde7f0}\index{Cell@{Cell}!GetTranscriptC@{GetTranscriptC}}
+\index{GetTranscriptC@{GetTranscriptC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetTranscriptC()}{GetTranscriptC()}}
+{\footnotesize\ttfamily \label{classCell_ab8758be8ca2c87f23200d2328acde7f0} 
+int Cell\+::\+Get\+TranscriptC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of transcription events happened inside the cell. 
+
+\begin{DoxyReturn}{Returns}
+int Number of transcription events 
+\end{DoxyReturn}
+\Hypertarget{classCell_aaa160f8e1514226dcaa44229c4a224fe}\index{Cell@{Cell}!GetUnassignedCodewordC@{GetUnassignedCodewordC}}
+\index{GetUnassignedCodewordC@{GetUnassignedCodewordC}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetUnassignedCodewordC()}{GetUnassignedCodewordC()}}
+{\footnotesize\ttfamily \label{classCell_aaa160f8e1514226dcaa44229c4a224fe} 
+int Cell\+::\+Get\+Unassigned\+CodewordC (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of events happened inside the cell not assigned to any known codeword. 
+
+\begin{DoxyReturn}{Returns}
+int Number of unassigned events 
+\end{DoxyReturn}
+\Hypertarget{classCell_a559281b2db6fdcd13def27cc1d62777a}\index{Cell@{Cell}!GetX@{GetX}}
+\index{GetX@{GetX}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily \label{classCell_a559281b2db6fdcd13def27cc1d62777a} 
+float Cell\+::\+GetX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the x coordinate of the cell centroid in micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float x-\/value 
+\end{DoxyReturn}
+\Hypertarget{classCell_a9bd0aafb55c6e99d36bcb2d97ffb299e}\index{Cell@{Cell}!GetY@{GetY}}
+\index{GetY@{GetY}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily \label{classCell_a9bd0aafb55c6e99d36bcb2d97ffb299e} 
+float Cell\+::\+GetY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the y coordinate of the cell centroid in micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float y-\/value 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cell.\+h\item 
+Cell.\+cpp\end{DoxyCompactItemize}

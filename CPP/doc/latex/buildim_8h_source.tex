@@ -1,0 +1,56 @@
+\doxysection{buildim.\+h}
+\hypertarget{buildim_8h_source}{}\label{buildim_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_BUILDIM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_BUILDIM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}debugging.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}SpRData.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ @defgroup\ ParametersForDescriptionFile}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{ParamTypes}}\ \{\ Boolean,String,Int,Int2,Float2,Float4,ListInt,ListString,NoType\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ std::string\ \mbox{\hyperlink{group__ParametersForDescriptionFile_a7750c5df1ca8a69405be5413ef9905b4}{ParamName}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ std::string\ \mbox{\hyperlink{group__ParametersForDescriptionFile_aaa341a29fbd804cb2db26a55ff798a9b}{AltParamName}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{ParamTypes}}\ \ \ \mbox{\hyperlink{group__ParametersForDescriptionFile_af35645fcbc0266c6320ecc73e40ae8d1}{ParType}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{ParamTypes}}\ \ \ \mbox{\hyperlink{group__ParametersForDescriptionFile_ac040b1c59fc4d09a454223b755b73699}{AltParType}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{Parameter}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}{CurrentNumberParameters}}=20;\ \ \ \ \ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{group__ParametersForDescriptionFile_ga5b316307b1e6c4689834f8c5a2a8f10b}{dirslash}}=\textcolor{stringliteral}{"{}/"{}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{Parameter}}\ \mbox{\hyperlink{group__ParametersForDescriptionFile_ga1fdda5437a8ea546738abc8b74180a03}{Params}}[\mbox{\hyperlink{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}{CurrentNumberParameters}}]=\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \{\textcolor{stringliteral}{"{}PrependPath"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 0}}
+\DoxyCodeLine{00043\ \ \{\textcolor{stringliteral}{"{}Genes"{}},\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 1}}
+\DoxyCodeLine{00044\ \ \{\textcolor{stringliteral}{"{}Cells"{}},\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 2}}
+\DoxyCodeLine{00045\ \ \{\textcolor{stringliteral}{"{}Transcripts"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 3}}
+\DoxyCodeLine{00046\ \ \{\textcolor{stringliteral}{"{}Clusters"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 4}}
+\DoxyCodeLine{00047\ \ \{\textcolor{stringliteral}{"{}CellBoundaries"{}},\ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 5}}
+\DoxyCodeLine{00048\ \ \{\textcolor{stringliteral}{"{}NucBoundaries"{}},\ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 6}}
+\DoxyCodeLine{00049\ \ \{\textcolor{stringliteral}{"{}Spacing"{}},\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Float2,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 7}}
+\DoxyCodeLine{00050\ \ \{\textcolor{stringliteral}{"{}Dimensions"{}},\ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int2,\ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 8}}
+\DoxyCodeLine{00051\ \ \{\textcolor{stringliteral}{"{}PixPerBin"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int,\ \ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 9}}
+\DoxyCodeLine{00052\ \ \{\textcolor{stringliteral}{"{}AoIWin"{}},\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}AoIID"{}},\ \ \ \ \ \ \ ParamTypes::Float4,\ ParamTypes::String\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 10}}
+\DoxyCodeLine{00053\ \ \{\textcolor{stringliteral}{"{}QvThres"{}},\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int,\ \ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 11}}
+\DoxyCodeLine{00054\ \ \{\textcolor{stringliteral}{"{}OnlyTargets"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 12}}
+\DoxyCodeLine{00055\ \ \{\textcolor{stringliteral}{"{}TargetIds"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}TargetNames"{}},\ ParamTypes::ListInt,ParamTypes::ListString\},\ \ \ \textcolor{comment}{//\ 13}}
+\DoxyCodeLine{00056\ \ \{\textcolor{stringliteral}{"{}GenMarks"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 14}}
+\DoxyCodeLine{00057\ \ \{\textcolor{stringliteral}{"{}OutRfile"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 15}}
+\DoxyCodeLine{00058\ \ \{\textcolor{stringliteral}{"{}OutImfile"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 16}}
+\DoxyCodeLine{00059\ \ \{\textcolor{stringliteral}{"{}ColorFile"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 17}}
+\DoxyCodeLine{00060\ \ \{\textcolor{stringliteral}{"{}OutHistfile"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ \textcolor{comment}{//\ 18}}
+\DoxyCodeLine{00061\ \ \{\textcolor{stringliteral}{"{}CheckThisFile"{}},\ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\}\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 19}}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00068\ }
+
+\end{DoxyCode}

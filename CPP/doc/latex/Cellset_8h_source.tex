@@ -1,0 +1,48 @@
+\doxysection{Cellset.\+h}
+\hypertarget{Cellset_8h_source}{}\label{Cellset_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_CELLSET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_CELLSET\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}ProcessCSV.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}ndplaces.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellSet_a173f5ab731a5a731329f2673b2af7ed3}{CellSet}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{classCellSet_a3a2b3faafea45a74c32dbf5feaebf00d}{default\_chunksize\_for\_CellSet}}=128;\ \ \ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCellSet_a169fca5401c1cb96550998c0ba876938}{UnknownCluster}}=-\/1;\ \ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classCellSet_a173f5ab731a5a731329f2673b2af7ed3}{CellSet}}(std::string\ cells\_file\_name,\textcolor{keywordtype}{bool}\ check=\textcolor{keyword}{false});}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellSet_af88fe42fe626337db6aeb006214f28c0}{Show}}(std::ostream\ \&out,\textcolor{keywordtype}{char}\ sep=\textcolor{charliteral}{','},\textcolor{keywordtype}{bool}\ getcl=\textcolor{keyword}{false});}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCellSet_a76c0bc66d91ac32da676ab6e1d722984}{NumCells}}()\ \{\ \textcolor{keywordflow}{return}(cset.size());\ \};}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{classCell}{Cell}}\&\ \mbox{\hyperlink{classCellSet_a3f915e3c2e60e103d3aa9a15d75a06df}{GetCellRef}}(std::string\ idc);}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCellSet_a17561067b33fc39bde128257943d4cf8}{GetAreaRatio}}(std::string\ idc)\ \{\ \textcolor{keywordflow}{return}(\ id2place.contains(idc)\ ?\ cset[id2place[idc]].GetAreaRatio()\ :\ -\/1.0\ );\ \};}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellSet_a7626b0e1e505d36040f6c8dde277464c}{AddClusterInfo}}(std::string\ clfile);}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellSet_ab7dafaf2152ed2ecf0ca2f94223669e6}{AddBoundaryInfo}}(std::string\ bfile,\textcolor{keywordtype}{bool}\ cellboundary);}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCellSet_a4929dfcf6e06a8e0e9fdb3282c688540}{GetAttClust}}(std::string\ idc)\ \{\ \textcolor{keywordflow}{return}(\ id2place.contains(idc)\ ?\ cset[id2place[idc]].GetCluster()\ :\ \mbox{\hyperlink{classCellSet_a169fca5401c1cb96550998c0ba876938}{UnknownCluster}}\ );\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellSet_a544eaad2fe9793b4634b6a5aa8f668c6}{SaveAsBinaryWithDebug}}(std::string\ fname);}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellSet_a881c605c3b65ca74f827a5a3217532e3}{SaveAsBinary}}(std::string\ fname);}
+\DoxyCodeLine{00081\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ std::vector<Cell>\ cset;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ CellSetFromCSV(std::string\ fname);}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ CellSetFromBin(std::string\ fname);}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{void}\ CheckCellSet();}
+\DoxyCodeLine{00086\ \ \ std::unordered\_map<std::string,size\_t>\ \ id2place;\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ SetCellCluster(std::string\ idc,\textcolor{keywordtype}{int}\ clc,\textcolor{keywordtype}{bool}\ \&err);\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ SetBoundary(std::string\ idc,std::vector<float>\ \textcolor{keyword}{const}\ \&bx,std::vector<float>\ \textcolor{keyword}{const}\ \&by,std::vector<size\_t>\ \textcolor{keyword}{const}\ \&startp,\textcolor{keywordtype}{bool}\ cellboundary,\textcolor{keywordtype}{bool}\ \&err);}
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordtype}{void}\ FillId2place();}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{size\_t}\ num\_cells\_with\_boundary;}
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{size\_t}\ num\_nuc\_with\_boundary;}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

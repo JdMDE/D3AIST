@@ -1,0 +1,28 @@
+\doxysection{debugging.\+h}
+\hypertarget{debugging_8h_source}{}\label{debugging_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DEB\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DEB\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ WARNING:\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ When\ using\ multiline\ macros,\ remember\ that\ the\ line-\/sepparation\ character\ \(\backslash\)\ MUST\ be\ the\ last\ character\ of\ its\ line.\ }}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ ERRPROG(x)\ \(\backslash\)}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\{\(\backslash\)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ "{}Error\ from\ "{};\(\backslash\)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ if\ (progname!="{}"{})\(\backslash\)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ std::cerr\ <<\ progname\ <<\ "{}:\ "{};\(\backslash\)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ x\(\backslash\)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ exit(1);\(\backslash\)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ WARNPROG(x)\ \(\backslash\)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\{\(\backslash\)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ "{}Warning\ from\ "{};\(\backslash\)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ if\ (progname!="{}"{})\(\backslash\)}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ std::cerr\ <<\ progname\ <<\ "{}:\ "{};\(\backslash\)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ std::cerr\ <<\ x\(\backslash\)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ std::cerr.flush();\(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

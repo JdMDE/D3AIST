@@ -1,0 +1,47 @@
+\doxysection{Constants\+For\+Imfuse\+Image\+Generation }
+\hypertarget{group__ConstantsForImfuseImageGeneration}{}\label{group__ConstantsForImfuseImageGeneration}\index{ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__ConstantsForImfuseImageGeneration_gae96d11e41ce0a720ca0c1ca1bc3a53d8}\label{group__ConstantsForImfuseImageGeneration_gae96d11e41ce0a720ca0c1ca1bc3a53d8} 
+enum \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gae96d11e41ce0a720ca0c1ca1bc3a53d8}{Adjust\+Modes}} \{ {\bfseries No\+Adj}
+, {\bfseries Up}
+, {\bfseries Down}
+ \}
+\begin{DoxyCompactList}\small\item\em \doxylink{group__ConstantsForImfuseImageGeneration_gae96d11e41ce0a720ca0c1ca1bc3a53d8}{Adjust\+Modes} documentation Enumeration with the possibilities to apply a gamma transformation to obtain the output images. No\+Adj mean not to apply any gamma transformation, Up means to apply a convex one (decrease low gray values, increase high gray values) and Down means to apply a concave one (increase low gray values, decrease high gray values) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr unsigned int \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gad942c661ea48ac62ba75276db15d9a00}{neisize}} = 1
+\item 
+const double \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_ga1a0efefad70a192fc4988d20f9350998}{adjust\+\_\+gamma\+\_\+up}} = 0.\+95
+\item 
+const double \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gac2a86d9608df750faeb788b3d1090ecc}{adjust\+\_\+gamma\+\_\+down}} = 0.\+75
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\label{doc-var-members}
+\Hypertarget{group__ConstantsForImfuseImageGeneration_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{group__ConstantsForImfuseImageGeneration_gac2a86d9608df750faeb788b3d1090ecc}\index{ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}!adjust\_gamma\_down@{adjust\_gamma\_down}}
+\index{adjust\_gamma\_down@{adjust\_gamma\_down}!ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}}
+\doxysubsubsection{\texorpdfstring{adjust\_gamma\_down}{adjust\_gamma\_down}}
+{\footnotesize\ttfamily \label{group__ConstantsForImfuseImageGeneration_gac2a86d9608df750faeb788b3d1090ecc} 
+const double adjust\+\_\+gamma\+\_\+down = 0.\+75}
+
+Normalized value to which the maximum value present in the background image will be maped for type of gamma transformation Down \Hypertarget{group__ConstantsForImfuseImageGeneration_ga1a0efefad70a192fc4988d20f9350998}\index{ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}!adjust\_gamma\_up@{adjust\_gamma\_up}}
+\index{adjust\_gamma\_up@{adjust\_gamma\_up}!ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}}
+\doxysubsubsection{\texorpdfstring{adjust\_gamma\_up}{adjust\_gamma\_up}}
+{\footnotesize\ttfamily \label{group__ConstantsForImfuseImageGeneration_ga1a0efefad70a192fc4988d20f9350998} 
+const double adjust\+\_\+gamma\+\_\+up = 0.\+95}
+
+Normalized value to which the maximum value present in the background image will be maped for type of gamma transformation Up \Hypertarget{group__ConstantsForImfuseImageGeneration_gad942c661ea48ac62ba75276db15d9a00}\index{ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}!neisize@{neisize}}
+\index{neisize@{neisize}!ConstantsForImfuseImageGeneration@{ConstantsForImfuseImageGeneration}}
+\doxysubsubsection{\texorpdfstring{neisize}{neisize}}
+{\footnotesize\ttfamily \label{group__ConstantsForImfuseImageGeneration_gad942c661ea48ac62ba75276db15d9a00} 
+unsigned int neisize = 1\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+The constant to set the size of the pixel drawn for each event 

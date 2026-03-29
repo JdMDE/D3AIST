@@ -1,0 +1,139 @@
+\doxysection{Im\+Params Struct Reference}
+\hypertarget{structImParams}{}\label{structImParams}\index{ImParams@{ImParams}}
+
+
+Structure to account for all the parameters needed by the buildim program to generate R data and/or an image. The expression cfpar means to which parameter of the configuration file this field corresponds.  
+
+
+
+
+{\ttfamily \#include "{}imparams.\+h"{}}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{structImParams_a3784102629a5437d313eeac6d5d5044d}{osp}} \mbox{[}2\mbox{]}
+\item 
+int \mbox{\hyperlink{structImParams_a158dfbfb4b27d6b4f3bec2efccbf2a51}{ppbin}}
+\item 
+unsigned long \mbox{\hyperlink{structImParams_ab22cef06e33d501c21fc5f9a71ddddca}{w}}
+\item 
+unsigned long \mbox{\hyperlink{structImParams_a6a804affe94cf698890ed5eb3042cb08}{h}}
+\item 
+bool \mbox{\hyperlink{structImParams_aca2b9c7cc3eaad2fbf49f0f68ee41197}{exfov}}
+\item 
+std\+::string \mbox{\hyperlink{structImParams_a8f2779991ea34a2cdf3a718b0266b7bf}{idfov}}
+\item 
+float \mbox{\hyperlink{structImParams_a9b7addd494b3fa3f9468b1379d36ce88}{fovwin}} \mbox{[}4\mbox{]}
+\item 
+bool \mbox{\hyperlink{structImParams_af9a9cbb0182507a58e190d437f885876}{onlytargets}}
+\item 
+int \mbox{\hyperlink{structImParams_a624125504f306b4eb7dd88357823c4b0}{qvthres}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structImParams_acce3baee1b214957493510e430c76391}{numcodes}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structImParams_a9e5743404dd4534f0f2d864d636286a7}{targetnames}}
+\item 
+bool \mbox{\hyperlink{structImParams_a27ef9a497314a9589b0353e29e92af1e}{gmarks}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structColortabEntry}{Colortab\+Entry}} $>$ \mbox{\hyperlink{structImParams_a011391cf229b7a48b19983fb7ddb738d}{colortab}}
+\item 
+bool \mbox{\hyperlink{structImParams_aee4cbda5bd2cb149947e17b2c31410c0}{checkandexit}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to account for all the parameters needed by the buildim program to generate R data and/or an image. The expression cfpar means to which parameter of the configuration file this field corresponds. 
+
+\label{doc-variable-members}
+\Hypertarget{structImParams_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structImParams_aee4cbda5bd2cb149947e17b2c31410c0}\index{ImParams@{ImParams}!checkandexit@{checkandexit}}
+\index{checkandexit@{checkandexit}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{checkandexit}{checkandexit}}
+{\footnotesize\ttfamily \label{structImParams_aee4cbda5bd2cb149947e17b2c31410c0} 
+bool Im\+Params\+::checkandexit}
+
+Parameters for internal use by the programmer. As true, the configuration file is parsed and checked and the program exits. \Hypertarget{structImParams_a011391cf229b7a48b19983fb7ddb738d}\index{ImParams@{ImParams}!colortab@{colortab}}
+\index{colortab@{colortab}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{colortab}{colortab}}
+{\footnotesize\ttfamily \label{structImParams_a011391cf229b7a48b19983fb7ddb738d} 
+std\+::vector$<$\mbox{\hyperlink{structColortabEntry}{Colortab\+Entry}}$>$ Im\+Params\+::colortab}
+
+Vector of colors assigned to each gene, as a \doxylink{structColortabEntry}{Colortab\+Entry}. Empty vector if no image is to be generated. cfpar\+: Color\+File \Hypertarget{structImParams_aca2b9c7cc3eaad2fbf49f0f68ee41197}\index{ImParams@{ImParams}!exfov@{exfov}}
+\index{exfov@{exfov}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{exfov}{exfov}}
+{\footnotesize\ttfamily \label{structImParams_aca2b9c7cc3eaad2fbf49f0f68ee41197} 
+bool Im\+Params\+::exfov}
+
+True if area of interest is described as a region identifier; false if it is as a set of two points, upper left/lower right. \Hypertarget{structImParams_a9b7addd494b3fa3f9468b1379d36ce88}\index{ImParams@{ImParams}!fovwin@{fovwin}}
+\index{fovwin@{fovwin}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{fovwin}{fovwin}}
+{\footnotesize\ttfamily \label{structImParams_a9b7addd494b3fa3f9468b1379d36ce88} 
+float Im\+Params\+::fovwin\mbox{[}4\mbox{]}}
+
+(xu,yu) (xl,yl) Coordinates of upper left and lower right of the area of interest if exfov is false. All 0.\+0 otherwise. cfpar\+: Ao\+IWin \Hypertarget{structImParams_a27ef9a497314a9589b0353e29e92af1e}\index{ImParams@{ImParams}!gmarks@{gmarks}}
+\index{gmarks@{gmarks}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{gmarks}{gmarks}}
+{\footnotesize\ttfamily \label{structImParams_a27ef9a497314a9589b0353e29e92af1e} 
+bool Im\+Params\+::gmarks}
+
+True if request to generate marks in the R files, false otherwise. cfpar\+: Gen\+Marks \Hypertarget{structImParams_a6a804affe94cf698890ed5eb3042cb08}\index{ImParams@{ImParams}!h@{h}}
+\index{h@{h}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily \label{structImParams_a6a804affe94cf698890ed5eb3042cb08} 
+unsigned long Im\+Params\+::h}
+
+Height of the original image in pixels. cpfar\+: Dimensions \Hypertarget{structImParams_a8f2779991ea34a2cdf3a718b0266b7bf}\index{ImParams@{ImParams}!idfov@{idfov}}
+\index{idfov@{idfov}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{idfov}{idfov}}
+{\footnotesize\ttfamily \label{structImParams_a8f2779991ea34a2cdf3a718b0266b7bf} 
+std\+::string Im\+Params\+::idfov}
+
+Identifier of the region of interest, if exfov is true. Empty string otherwise. cfpar Ao\+IID \Hypertarget{structImParams_acce3baee1b214957493510e430c76391}\index{ImParams@{ImParams}!numcodes@{numcodes}}
+\index{numcodes@{numcodes}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{numcodes}{numcodes}}
+{\footnotesize\ttfamily \label{structImParams_acce3baee1b214957493510e430c76391} 
+std\+::vector$<$int$>$ Im\+Params\+::numcodes}
+
+Vector of codewords of requested genes, if given by codeword; empty vector if not. cfpar\+: Target\+Ids \Hypertarget{structImParams_af9a9cbb0182507a58e190d437f885876}\index{ImParams@{ImParams}!onlytargets@{onlytargets}}
+\index{onlytargets@{onlytargets}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{onlytargets}{onlytargets}}
+{\footnotesize\ttfamily \label{structImParams_af9a9cbb0182507a58e190d437f885876} 
+bool Im\+Params\+::onlytargets}
+
+True if only target genes are allowed in the list of requested genes, false otherwise. cfpar\+: Only\+Targets \Hypertarget{structImParams_a3784102629a5437d313eeac6d5d5044d}\index{ImParams@{ImParams}!osp@{osp}}
+\index{osp@{osp}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{osp}{osp}}
+{\footnotesize\ttfamily \label{structImParams_a3784102629a5437d313eeac6d5d5044d} 
+float Im\+Params\+::osp\mbox{[}2\mbox{]}}
+
+Horizontal and vertical spacing in micrometers of the original image. cfpar\+: Spacing \Hypertarget{structImParams_a158dfbfb4b27d6b4f3bec2efccbf2a51}\index{ImParams@{ImParams}!ppbin@{ppbin}}
+\index{ppbin@{ppbin}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{ppbin}{ppbin}}
+{\footnotesize\ttfamily \label{structImParams_a158dfbfb4b27d6b4f3bec2efccbf2a51} 
+int Im\+Params\+::ppbin}
+
+Number of original image pixels per bin (a bin is a pixel in the generated pseudoimage). cfpar\+: Pix\+Per\+Bin \Hypertarget{structImParams_a624125504f306b4eb7dd88357823c4b0}\index{ImParams@{ImParams}!qvthres@{qvthres}}
+\index{qvthres@{qvthres}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{qvthres}{qvthres}}
+{\footnotesize\ttfamily \label{structImParams_a624125504f306b4eb7dd88357823c4b0} 
+int Im\+Params\+::qvthres}
+
+Threshold on the quality value to accept a transcription event. cfpar\+: Qv\+Thres \Hypertarget{structImParams_a9e5743404dd4534f0f2d864d636286a7}\index{ImParams@{ImParams}!targetnames@{targetnames}}
+\index{targetnames@{targetnames}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{targetnames}{targetnames}}
+{\footnotesize\ttfamily \label{structImParams_a9e5743404dd4534f0f2d864d636286a7} 
+std\+::vector$<$std\+::string$>$ Im\+Params\+::targetnames}
+
+Vector of short gene names of requested genes, if given by name; empty vector if not. cfpar\+: Target\+Names \Hypertarget{structImParams_ab22cef06e33d501c21fc5f9a71ddddca}\index{ImParams@{ImParams}!w@{w}}
+\index{w@{w}!ImParams@{ImParams}}
+\doxysubsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily \label{structImParams_ab22cef06e33d501c21fc5f9a71ddddca} 
+unsigned long Im\+Params\+::w}
+
+Width of the original image in pixels. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+imparams.\+h\end{DoxyCompactItemize}

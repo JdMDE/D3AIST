@@ -1,0 +1,60 @@
+\doxysection{Genepanel.\+h}
+\hypertarget{Genepanel_8h_source}{}\label{Genepanel_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GENEPANEL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GENEPANEL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Gene.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGenePanel_a8678e1f83b7875531ebb346700d3580f}{GenePanel}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{classGenePanel_af48cbf020beede0e073b317306d8239c}{default\_chunksize\_for\_GenePanel}}=16;\ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_abb3d58f90620056df396371e48459170}{Target}}=0;\ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classGenePanel_a8678e1f83b7875531ebb346700d3580f}{GenePanel}}(std::string\ panel\_file\_name,\textcolor{keywordtype}{bool}\ check=\textcolor{keyword}{false});}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGenePanel_a6a5c446b30d75a1537baf99dd29747a4}{Show}}(std::ostream\ \&out,\textcolor{keywordtype}{char}\ sep=\textcolor{charliteral}{','});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_a8b700fd4ed18e1d59bfdc8d97a641b7e}{GetMinCodeword}}()\ \{\ \textcolor{keywordflow}{return}(mincod);\ \};}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_abe901f12b365a8263b16d599b80806f3}{GetMaxCodeword}}()\ \{\ \textcolor{keywordflow}{return}(maxcod);\ \};}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_a7b0ea3c30d40e295536189246d545030}{GetMinCoverage}}()\ \{\ \textcolor{keywordflow}{return}(mincov);\ \};}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_a3cf37f4284233eaa11b5fc19c590d0fa}{GetMaxCoverage}}()\ \{\ \textcolor{keywordflow}{return}(maxcov);\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ std::vector<int>\ \mbox{\hyperlink{classGenePanel_a2ea13a1622cfa0c2295ba66756f81bb1}{GetSortedTargets}}();}
+\DoxyCodeLine{00064\ \ \ std::vector<int>\ \mbox{\hyperlink{classGenePanel_a13d2e2b880c0f26884486e61348cb4c5}{GetSortedGenes}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ std::string\ \mbox{\hyperlink{classGenePanel_a0525982509999345e9d2c00e049065c8}{GetIdFromCodeword}}(\textcolor{keywordtype}{int}\ cw);}
+\DoxyCodeLine{00077\ \ \ std::string\ \mbox{\hyperlink{classGenePanel_a002592e499727585f26925ea8db43087}{GetNameFromCodeword}}(\textcolor{keywordtype}{int}\ cw);}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGenePanel_ad6846ae01b3ef9907fea39a3e33b8e12}{GetCodewordFromName}}(std::string\ genename);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGenePanel_a25f1cfdeda08553c6e1fd227f1a47a2e}{IsGene}}(\textcolor{keywordtype}{int}\ cw)\ \{\ \textcolor{keywordflow}{return}(\ isgene.find(cw)!=isgene.end()\ ?\ isgene[cw]\ :\ \textcolor{keyword}{false});\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGenePanel_ac5c33872bedf1cd4e086be41ef493030}{FillColors}}(std::vector<ColortabEntry>\ \&v);}
+\DoxyCodeLine{00102\ \ \ \mbox{\hyperlink{structRGB__color}{RGB\_color}}\ \mbox{\hyperlink{classGenePanel_a59e1005e0ba9ae378c36bfd12e3b3a7d}{GetColorFromCodeword}}(\textcolor{keywordtype}{int}\ cw);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGenePanel_af8b59d938fae628c52e5a7bb5873e5ac}{SaveAsBinaryWithDebug}}(std::string\ fname);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGenePanel_a416e0c1c177422423825559c59f07272}{SaveAsBinary}}(std::string\ fname);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00117\ \ \ std::vector<Gene>\ panel;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ std::map<int,bool>\ isgene;\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{int}\ mincod;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{int}\ maxcod;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{int}\ mincov;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{int}\ maxcov;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{void}\ CheckPanel();}
+\DoxyCodeLine{00125\ \ \ \textcolor{keywordtype}{void}\ GenePanelFromCSV(std::string\ fname);}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{void}\ GenePanelFromBin(std::string\ fname);}
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{void}\ FillIsGeneMap();}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{void}\ SetColorOfGene(\textcolor{keywordtype}{int}\ cw,\mbox{\hyperlink{structRGB__color}{RGB\_color}}\ \&c);}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,63 @@
+\doxysection{Sp\+Pseudo\+Image.\+h}
+\hypertarget{SpPseudoImage_8h_source}{}\label{SpPseudoImage_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ @cond\ DO\_NOT\_DOCUMENT}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ \_SPPSEUDOIMAGE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ \_SPPSEUDOIMAGE\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }SpPseudoImage}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ MyPoint[2];}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ My3DPoint[3];}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ My3DIndex[3];}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ Spacing[3];}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ MyValPixelType;}
+\DoxyCodeLine{00018\ \ \ \ \textcolor{keyword}{typedef}\ std::vector<std::pair<float,float>>\ ListCoord;}
+\DoxyCodeLine{00019\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00020\ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ code;}
+\DoxyCodeLine{00022\ \ \ \ \ ListCoord\ Realcoord;}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<float>\ DistNuc;}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<std::reference\_wrapper<Cell>>\ vcells;}
+\DoxyCodeLine{00025\ \ \ \ \ MyValPixelType\ v;}
+\DoxyCodeLine{00026\ \ \ \ \}\ entry;}
+\DoxyCodeLine{00027\ \ \ \ \textcolor{keyword}{typedef}\ std::vector<entry>\ PixContent;}
+\DoxyCodeLine{00028\ \ \ \ \textcolor{keyword}{typedef}\ PixContent\ *PixContentPointer;}
+\DoxyCodeLine{00029\ \ \ \ SpPseudoImage(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height,Spacing\ rsp,My3DPoint\ origin,\textcolor{keywordtype}{int}\ cr);}
+\DoxyCodeLine{00030\ \ \ \ \string~SpPseudoImage();}
+\DoxyCodeLine{00031\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ GetWidth()\ \{\ \textcolor{keywordflow}{return}(w);\ \};}
+\DoxyCodeLine{00032\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ GetHeight()\ \{\ \textcolor{keywordflow}{return}(h);\ \};}
+\DoxyCodeLine{00033\ \ \ \ PixContent\ GetPixList(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ r,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c)\ \{\ \textcolor{keywordflow}{return}(ima[r][c]);\ \};}
+\DoxyCodeLine{00034\ \ \ \ \textcolor{keywordtype}{int}\ GetCoderest()\ \{\ \textcolor{keywordflow}{return}(coderest);\ \};}
+\DoxyCodeLine{00035\ \ \ \ \textcolor{keywordtype}{bool}\ PPhysicalPointToIndex(My3DPoint\ \&p,My3DIndex\ \&idx);}
+\DoxyCodeLine{00036\ \ \ \ \textcolor{keywordtype}{bool}\ PIndexToPhysicalPoint(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ r,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c,MyPoint\ \&p);}
+\DoxyCodeLine{00037\ \ \ \ \textcolor{keywordtype}{void}\ SimpleInsertOrIncrementPixelValue(My3DIndex\ \&idx);}
+\DoxyCodeLine{00038\ \ \ \ \textcolor{keywordtype}{void}\ InsertOrIncrementPixelValue(My3DIndex\ \&idx,\textcolor{keywordtype}{float}\ dnuc,Cell\ \&cell,\textcolor{keywordtype}{size\_t}\ \&rep\_locations,\textcolor{keywordtype}{size\_t}\ \&rep\_locations\_and\_codes,\textcolor{keywordtype}{float}\ x=0.0,\textcolor{keywordtype}{float}\ y=0.0);}
+\DoxyCodeLine{00039\ \ \ \ \textcolor{keywordtype}{void}\ GetCounts(\textcolor{keywordtype}{size\_t}\ *sums,\textcolor{keywordtype}{size\_t}\ \&totsum,\textcolor{keywordtype}{size\_t}\ *maxvalues,\textcolor{keywordtype}{size\_t}\ \&nv);}
+\DoxyCodeLine{00040\ \ \ \ \textcolor{keywordtype}{float}\ GetXOrig()\ \{\ \textcolor{keywordflow}{return}(orig[0]);\ \};}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordtype}{float}\ GetYOrig()\ \{\ \textcolor{keywordflow}{return}(orig[1]);\ \};}
+\DoxyCodeLine{00042\ \ \ \ \textcolor{keywordtype}{float}\ GetXCorner()\ \{\ \textcolor{keywordflow}{return}(corner[0]);\ \};}
+\DoxyCodeLine{00043\ \ \ \ \textcolor{keywordtype}{float}\ GetYCorner()\ \{\ \textcolor{keywordflow}{return}(corner[1]);\ \};}
+\DoxyCodeLine{00044\ \ \ \ \textcolor{keywordtype}{float}\ GetXSpacing()\ \{\ \textcolor{keywordflow}{return}(sp[0]);\ \};}
+\DoxyCodeLine{00045\ \ \ \ \textcolor{keywordtype}{float}\ GetYSpacing()\ \{\ \textcolor{keywordflow}{return}(sp[1]);\ \};}
+\DoxyCodeLine{00046\ \ \ \ \textcolor{keywordtype}{void}\ TransfTest();}
+\DoxyCodeLine{00047\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ w,h;}
+\DoxyCodeLine{00049\ \ \ \ Spacing\ sp;}
+\DoxyCodeLine{00050\ \ \ \ My3DPoint\ orig;}
+\DoxyCodeLine{00051\ \ \ \ MyPoint\ corner;}
+\DoxyCodeLine{00052\ \ \ \ PixContent\ **ima;}
+\DoxyCodeLine{00053\ \ \ \ \textcolor{keywordtype}{int}\ coderest;}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ @endcond}}
+\DoxyCodeLine{00058\ }
+
+\end{DoxyCode}

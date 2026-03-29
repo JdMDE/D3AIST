@@ -1,0 +1,120 @@
+\doxysection{Parameters\+For\+Description\+File }
+\hypertarget{group__ParametersForDescriptionFile}{}\label{group__ParametersForDescriptionFile}\index{ParametersForDescriptionFile@{ParametersForDescriptionFile}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{Parameter}}
+\begin{DoxyCompactList}\small\item\em Structure to parse each parameter of the configuration file.  \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{More...}}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}\label{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8} 
+enum class \mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{Param\+Types}} \{ \newline
+{\bfseries Boolean}
+, {\bfseries String}
+, {\bfseries Int}
+, {\bfseries Int2}
+, \newline
+{\bfseries Float2}
+, {\bfseries Float4}
+, {\bfseries List\+Int}
+, {\bfseries List\+String}
+, \newline
+{\bfseries No\+Type}
+ \}
+\begin{DoxyCompactList}\small\item\em \doxylink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{Param\+Types} documentation Enumeration with the types of values we can expect for our parameters. Int2 means \textquotesingle{}integer integer\textquotesingle{}, Float2 means \textquotesingle{}float float\textquotesingle{}, Float4 means \textquotesingle{}float float float float\textquotesingle{}. All of these are separated by one or more blank spaces. List\+Int means \textquotesingle{}int,int,....,int\textquotesingle{}, i.\+e., a list of comma-\/separated integers. Similarly for List\+String. In these cases, spaces are not allowed and there must be no comma at the end. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \mbox{\hyperlink{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}{Current\+Number\+Parameters}} =20
+\item 
+const std\+::string \mbox{\hyperlink{group__ParametersForDescriptionFile_ga5b316307b1e6c4689834f8c5a2a8f10b}{dirslash}} ="{}/"{}
+\item 
+const \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{Parameter}} \mbox{\hyperlink{group__ParametersForDescriptionFile_ga1fdda5437a8ea546738abc8b74180a03}{Params}} \mbox{[}\mbox{\hyperlink{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}{Current\+Number\+Parameters}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Class Documentation}
+\index{Parameter@{Parameter}}\label{structParameter}
+\Hypertarget{group__ParametersForDescriptionFile_structParameter}
+\doxysubsubsection{struct Parameter}
+Structure to parse each parameter of the configuration file. \begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{group__ParametersForDescriptionFile_aaa341a29fbd804cb2db26a55ff798a9b}\label{group__ParametersForDescriptionFile_aaa341a29fbd804cb2db26a55ff798a9b}} 
+string&
+AltParamName&
+Alternative parameter name when two forms of the parameter are mutually exclusive \\
+\hline
+
+\mbox{\Hypertarget{group__ParametersForDescriptionFile_ac040b1c59fc4d09a454223b755b73699}\label{group__ParametersForDescriptionFile_ac040b1c59fc4d09a454223b755b73699}} 
+\mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{ParamTypes}}&
+AltParType&
+Type of alternative parameter when two forms of the parameter are mutually exclusive \\
+\hline
+
+\mbox{\Hypertarget{group__ParametersForDescriptionFile_a7750c5df1ca8a69405be5413ef9905b4}\label{group__ParametersForDescriptionFile_a7750c5df1ca8a69405be5413ef9905b4}} 
+string&
+ParamName&
+Name of the parameter, as given in the configuration file \\
+\hline
+
+\mbox{\Hypertarget{group__ParametersForDescriptionFile_af35645fcbc0266c6320ecc73e40ae8d1}\label{group__ParametersForDescriptionFile_af35645fcbc0266c6320ecc73e40ae8d1}} 
+\mbox{\hyperlink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{ParamTypes}}&
+ParType&
+Type of parameter. One of the values of the enum \doxylink{group__ParametersForDescriptionFile_gaba061f100b487dbf51980fcf10ab8ab8}{Param\+Types} \\
+\hline
+
+\end{DoxyFields}
+
+
+\label{doc-var-members}
+\Hypertarget{group__ParametersForDescriptionFile_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}\index{ParametersForDescriptionFile@{ParametersForDescriptionFile}!CurrentNumberParameters@{CurrentNumberParameters}}
+\index{CurrentNumberParameters@{CurrentNumberParameters}!ParametersForDescriptionFile@{ParametersForDescriptionFile}}
+\doxysubsubsection{\texorpdfstring{CurrentNumberParameters}{CurrentNumberParameters}}
+{\footnotesize\ttfamily \label{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7} 
+const unsigned int Current\+Number\+Parameters =20}
+
+This constant must be changed if parameters of the configuration file are added or removed. \Hypertarget{group__ParametersForDescriptionFile_ga5b316307b1e6c4689834f8c5a2a8f10b}\index{ParametersForDescriptionFile@{ParametersForDescriptionFile}!dirslash@{dirslash}}
+\index{dirslash@{dirslash}!ParametersForDescriptionFile@{ParametersForDescriptionFile}}
+\doxysubsubsection{\texorpdfstring{dirslash}{dirslash}}
+{\footnotesize\ttfamily \label{group__ParametersForDescriptionFile_ga5b316307b1e6c4689834f8c5a2a8f10b} 
+const std\+::string dirslash ="{}/"{}}
+
+The directory slash in Unix-\/like systems. \Hypertarget{group__ParametersForDescriptionFile_ga1fdda5437a8ea546738abc8b74180a03}\index{ParametersForDescriptionFile@{ParametersForDescriptionFile}!Params@{Params}}
+\index{Params@{Params}!ParametersForDescriptionFile@{ParametersForDescriptionFile}}
+\doxysubsubsection{\texorpdfstring{Params}{Params}}
+{\footnotesize\ttfamily \label{group__ParametersForDescriptionFile_ga1fdda5437a8ea546738abc8b74180a03} 
+const \mbox{\hyperlink{group__ParametersForDescriptionFile_structParameter}{Parameter}} Params\mbox{[}\mbox{\hyperlink{group__ParametersForDescriptionFile_ga9117b20ec473c8c2a276990a993bf8b7}{Current\+Number\+Parameters}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}PrependPath"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Genes"{}},\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Cells"{}},\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Transcripts"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Clusters"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}CellBoundaries"{}},\ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}NucBoundaries"{}},\ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Spacing"{}},\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Float2,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}Dimensions"{}},\ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int2,\ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}PixPerBin"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int,\ \ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}AoIWin"{}},\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}AoIID"{}},\ \ \ \ \ \ \ ParamTypes::Float4,\ ParamTypes::String\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}QvThres"{}},\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Int,\ \ \ \ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}OnlyTargets"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}TargetIds"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}TargetNames"{}},\ ParamTypes::ListInt,ParamTypes::ListString\},\ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}GenMarks"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}OutRfile"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}OutImfile"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}ColorFile"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}OutHistfile"{}},\ \ \ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::String,\ ParamTypes::NoType\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \{\textcolor{stringliteral}{"{}CheckThisFile"{}},\ \ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ ParamTypes::Boolean,ParamTypes::NoType\}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Array of \doxylink{group__ParametersForDescriptionFile_structParameter}{Parameter} structures with all the currently allowed parameters 

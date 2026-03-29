@@ -1,0 +1,35 @@
+\doxysection{imfuse.\+h}
+\hypertarget{imfuse_8h_source}{}\label{imfuse_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_IMFUSE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_IMFUSE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}debugging.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}imtypes.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <itkImageRegionIteratorWithIndex.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <itkUnaryFunctorImageFilter.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <itkMinimumMaximumImageCalculator.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}gammatransf.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ @defgroup\ ConstantsForImfuseImageGeneration}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gad942c661ea48ac62ba75276db15d9a00}{neisize}}\ =\ 1;\ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gae96d11e41ce0a720ca0c1ca1bc3a53d8}{AdjustModes}}\ \{\ NoAdj,\ Up,\ Down\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_ga1a0efefad70a192fc4988d20f9350998}{adjust\_gamma\_up}}\ =\ 0.95;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{group__ConstantsForImfuseImageGeneration_gac2a86d9608df750faeb788b3d1090ecc}{adjust\_gamma\_down}}\ =\ 0.75;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ TPixInput,\ \textcolor{keyword}{class}\ TPixOutput>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGammaTransf}{GammaTransf}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{using\ }GammaFilterType\ =\ itk::UnaryFunctorImageFilter<ImageBinType,\ ImageBinType,\ GammaTransf<BinPixelType,\ BinPixelType>>;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{using\ }ImageCalculatorFilterType\ =\ itk::MinimumMaximumImageCalculator<ImageBinType>;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

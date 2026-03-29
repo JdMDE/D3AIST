@@ -1,0 +1,338 @@
+\doxysection{Gene\+Panel Class Reference}
+\hypertarget{classGenePanel}{}\label{classGenePanel}\index{GenePanel@{GenePanel}}
+
+
+\doxylink{classGenePanel}{Gene\+Panel} class.  
+
+
+
+
+{\ttfamily \#include "{}Genepanel.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGenePanel_a8678e1f83b7875531ebb346700d3580f}{Gene\+Panel}} (std\+::string panel\+\_\+file\+\_\+name, bool check=false)
+\begin{DoxyCompactList}\small\item\em \doxylink{classGenePanel}{Gene\+Panel} constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGenePanel_a6a5c446b30d75a1537baf99dd29747a4}{Show}} (std\+::ostream \&out, char sep=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Procedure to show all the data from the gene panel in .csv format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGenePanel_a8b700fd4ed18e1d59bfdc8d97a641b7e}{Get\+Min\+Codeword}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the minimum value of the codewords of all genes/clonotypes/control probes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGenePanel_abe901f12b365a8263b16d599b80806f3}{Get\+Max\+Codeword}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the maximum value of the codewords of all genes/clonotypes/control probes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGenePanel_a7b0ea3c30d40e295536189246d545030}{Get\+Min\+Coverage}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the minimum value of the coverage of all genes/clonotypes/control probes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGenePanel_a3cf37f4284233eaa11b5fc19c590d0fa}{Get\+Max\+Coverage}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the maximum value of the coverage of all genes/clonotypes/control probes. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classGenePanel_a2ea13a1622cfa0c2295ba66756f81bb1}{Get\+Sorted\+Targets}} ()
+\begin{DoxyCompactList}\small\item\em Function to get a vector with the codewords of all the genes considered as targets, sorted from lower to higher. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classGenePanel_a13d2e2b880c0f26884486e61348cb4c5}{Get\+Sorted\+Genes}} ()
+\begin{DoxyCompactList}\small\item\em Function to get a vector with the codewords of all the genes, either targets or not, sorted from lower to higher. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGenePanel_a0525982509999345e9d2c00e049065c8}{Get\+Id\+From\+Codeword}} (int cw)
+\begin{DoxyCompactList}\small\item\em Function to return the gene ENSEMS identifier from its codeword. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGenePanel_a002592e499727585f26925ea8db43087}{Get\+Name\+From\+Codeword}} (int cw)
+\begin{DoxyCompactList}\small\item\em Function to return the gene short name from its codeword. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGenePanel_ad6846ae01b3ef9907fea39a3e33b8e12}{Get\+Codeword\+From\+Name}} (std\+::string genename)
+\begin{DoxyCompactList}\small\item\em Function to return the gene codeword from its short name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGenePanel_a25f1cfdeda08553c6e1fd227f1a47a2e}{Is\+Gene}} (int cw)
+\begin{DoxyCompactList}\small\item\em Function to check if the entity with a given codeword is a gene or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGenePanel_ac5c33872bedf1cd4e086be41ef493030}{Fill\+Colors}} (std\+::vector$<$ \mbox{\hyperlink{structColortabEntry}{Colortab\+Entry}} $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Procedure to fill the internal table of colors associated to each gene (for representation purposes) from a vector of colors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structRGB__color}{RGB\+\_\+color}} \mbox{\hyperlink{classGenePanel_a59e1005e0ba9ae378c36bfd12e3b3a7d}{Get\+Color\+From\+Codeword}} (int cw)
+\begin{DoxyCompactList}\small\item\em A function to return the color associated to the gene with a given codeword, as stored in the internal table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGenePanel_af8b59d938fae628c52e5a7bb5873e5ac}{Save\+As\+Binary\+With\+Debug}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the gene panel in binary format in a file debugging the writing bytes process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGenePanel_a416e0c1c177422423825559c59f07272}{Save\+As\+Binary}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the cell set in binary format in a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned short \mbox{\hyperlink{classGenePanel_af48cbf020beede0e073b317306d8239c}{default\+\_\+chunksize\+\_\+for\+\_\+\+Gene\+Panel}} =16
+\item 
+const int \mbox{\hyperlink{classGenePanel_abb3d58f90620056df396371e48459170}{Target}} =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classGenePanel}{Gene\+Panel} class. 
+
+Class \doxylink{classGenePanel}{Gene\+Panel}\+: a class to hold all information about a gene panel read from the description file in .csv or binary format 
+
+\label{doc-constructors}
+\Hypertarget{classGenePanel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGenePanel_a8678e1f83b7875531ebb346700d3580f}\index{GenePanel@{GenePanel}!GenePanel@{GenePanel}}
+\index{GenePanel@{GenePanel}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GenePanel()}{GenePanel()}}
+{\footnotesize\ttfamily \label{classGenePanel_a8678e1f83b7875531ebb346700d3580f} 
+Gene\+Panel\+::\+Gene\+Panel (\begin{DoxyParamCaption}\item[{std\+::string}]{panel\+\_\+file\+\_\+name}{, }\item[{bool}]{check}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{classGenePanel}{Gene\+Panel} constructor. 
+
+Constructor that takes the requested binary or .csv gene panel file, reads from it all relevant information and stores it inside the class. File type (binary or .csv) is determined from its extension. 
+\begin{DoxyParams}{Parameters}
+{\em panel\+\_\+file\+\_\+name} & string\+: The name (if accessible) or complete path of the .csv or binary file \\
+\hline
+{\em check} & bool\+: true to check that there are no any genes with duplicate identifiers. With many genes this check could be slow, so the parameter is by default false. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classGenePanel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGenePanel_ac5c33872bedf1cd4e086be41ef493030}\index{GenePanel@{GenePanel}!FillColors@{FillColors}}
+\index{FillColors@{FillColors}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{FillColors()}{FillColors()}}
+{\footnotesize\ttfamily \label{classGenePanel_ac5c33872bedf1cd4e086be41ef493030} 
+void Gene\+Panel\+::\+Fill\+Colors (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structColortabEntry}{Colortab\+Entry}} $>$ \&}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to fill the internal table of colors associated to each gene (for representation purposes) from a vector of colors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & vector$<$\+Color\+Tab\+Entry$>$ A vector of entries to the color table \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGenePanel_ad6846ae01b3ef9907fea39a3e33b8e12}\index{GenePanel@{GenePanel}!GetCodewordFromName@{GetCodewordFromName}}
+\index{GetCodewordFromName@{GetCodewordFromName}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetCodewordFromName()}{GetCodewordFromName()}}
+{\footnotesize\ttfamily \label{classGenePanel_ad6846ae01b3ef9907fea39a3e33b8e12} 
+int Gene\+Panel\+::\+Get\+Codeword\+From\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{genename}{}\end{DoxyParamCaption})}
+
+
+
+Function to return the gene codeword from its short name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em genename} & string The gene name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The gene codeword 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a59e1005e0ba9ae378c36bfd12e3b3a7d}\index{GenePanel@{GenePanel}!GetColorFromCodeword@{GetColorFromCodeword}}
+\index{GetColorFromCodeword@{GetColorFromCodeword}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetColorFromCodeword()}{GetColorFromCodeword()}}
+{\footnotesize\ttfamily \label{classGenePanel_a59e1005e0ba9ae378c36bfd12e3b3a7d} 
+\mbox{\hyperlink{structRGB__color}{RGB\+\_\+color}} Gene\+Panel\+::\+Get\+Color\+From\+Codeword (\begin{DoxyParamCaption}\item[{int}]{cw}{}\end{DoxyParamCaption})}
+
+
+
+A function to return the color associated to the gene with a given codeword, as stored in the internal table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cw} & int The codeword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{structRGB__color}{RGB\+\_\+color} structure with the color 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a0525982509999345e9d2c00e049065c8}\index{GenePanel@{GenePanel}!GetIdFromCodeword@{GetIdFromCodeword}}
+\index{GetIdFromCodeword@{GetIdFromCodeword}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetIdFromCodeword()}{GetIdFromCodeword()}}
+{\footnotesize\ttfamily \label{classGenePanel_a0525982509999345e9d2c00e049065c8} 
+string Gene\+Panel\+::\+Get\+Id\+From\+Codeword (\begin{DoxyParamCaption}\item[{int}]{cw}{}\end{DoxyParamCaption})}
+
+
+
+Function to return the gene ENSEMS identifier from its codeword. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cw} & int The gene codeword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The gene identifier 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_abe901f12b365a8263b16d599b80806f3}\index{GenePanel@{GenePanel}!GetMaxCodeword@{GetMaxCodeword}}
+\index{GetMaxCodeword@{GetMaxCodeword}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetMaxCodeword()}{GetMaxCodeword()}}
+{\footnotesize\ttfamily \label{classGenePanel_abe901f12b365a8263b16d599b80806f3} 
+int Gene\+Panel\+::\+Get\+Max\+Codeword (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the maximum value of the codewords of all genes/clonotypes/control probes. 
+
+\begin{DoxyReturn}{Returns}
+int The bigest of the codewords 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a3cf37f4284233eaa11b5fc19c590d0fa}\index{GenePanel@{GenePanel}!GetMaxCoverage@{GetMaxCoverage}}
+\index{GetMaxCoverage@{GetMaxCoverage}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetMaxCoverage()}{GetMaxCoverage()}}
+{\footnotesize\ttfamily \label{classGenePanel_a3cf37f4284233eaa11b5fc19c590d0fa} 
+int Gene\+Panel\+::\+Get\+Max\+Coverage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the maximum value of the coverage of all genes/clonotypes/control probes. 
+
+\begin{DoxyReturn}{Returns}
+int The bigest of the coverages 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a8b700fd4ed18e1d59bfdc8d97a641b7e}\index{GenePanel@{GenePanel}!GetMinCodeword@{GetMinCodeword}}
+\index{GetMinCodeword@{GetMinCodeword}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetMinCodeword()}{GetMinCodeword()}}
+{\footnotesize\ttfamily \label{classGenePanel_a8b700fd4ed18e1d59bfdc8d97a641b7e} 
+int Gene\+Panel\+::\+Get\+Min\+Codeword (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the minimum value of the codewords of all genes/clonotypes/control probes. 
+
+\begin{DoxyReturn}{Returns}
+int The smallest of the codewords 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a7b0ea3c30d40e295536189246d545030}\index{GenePanel@{GenePanel}!GetMinCoverage@{GetMinCoverage}}
+\index{GetMinCoverage@{GetMinCoverage}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetMinCoverage()}{GetMinCoverage()}}
+{\footnotesize\ttfamily \label{classGenePanel_a7b0ea3c30d40e295536189246d545030} 
+int Gene\+Panel\+::\+Get\+Min\+Coverage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the minimum value of the coverage of all genes/clonotypes/control probes. 
+
+\begin{DoxyReturn}{Returns}
+int The smallest of the coverages 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a002592e499727585f26925ea8db43087}\index{GenePanel@{GenePanel}!GetNameFromCodeword@{GetNameFromCodeword}}
+\index{GetNameFromCodeword@{GetNameFromCodeword}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetNameFromCodeword()}{GetNameFromCodeword()}}
+{\footnotesize\ttfamily \label{classGenePanel_a002592e499727585f26925ea8db43087} 
+string Gene\+Panel\+::\+Get\+Name\+From\+Codeword (\begin{DoxyParamCaption}\item[{int}]{cw}{}\end{DoxyParamCaption})}
+
+
+
+Function to return the gene short name from its codeword. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cw} & int The gene codeword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The gene name 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a13d2e2b880c0f26884486e61348cb4c5}\index{GenePanel@{GenePanel}!GetSortedGenes@{GetSortedGenes}}
+\index{GetSortedGenes@{GetSortedGenes}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetSortedGenes()}{GetSortedGenes()}}
+{\footnotesize\ttfamily \label{classGenePanel_a13d2e2b880c0f26884486e61348cb4c5} 
+vector$<$ int $>$ Gene\+Panel\+::\+Get\+Sorted\+Genes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get a vector with the codewords of all the genes, either targets or not, sorted from lower to higher. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ The sorted codewords 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a2ea13a1622cfa0c2295ba66756f81bb1}\index{GenePanel@{GenePanel}!GetSortedTargets@{GetSortedTargets}}
+\index{GetSortedTargets@{GetSortedTargets}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{GetSortedTargets()}{GetSortedTargets()}}
+{\footnotesize\ttfamily \label{classGenePanel_a2ea13a1622cfa0c2295ba66756f81bb1} 
+vector$<$ int $>$ Gene\+Panel\+::\+Get\+Sorted\+Targets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get a vector with the codewords of all the genes considered as targets, sorted from lower to higher. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ The sorted codewords 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a25f1cfdeda08553c6e1fd227f1a47a2e}\index{GenePanel@{GenePanel}!IsGene@{IsGene}}
+\index{IsGene@{IsGene}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{IsGene()}{IsGene()}}
+{\footnotesize\ttfamily \label{classGenePanel_a25f1cfdeda08553c6e1fd227f1a47a2e} 
+bool Gene\+Panel\+::\+Is\+Gene (\begin{DoxyParamCaption}\item[{int}]{cw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to check if the entity with a given codeword is a gene or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cw} & int The entity codeword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if it is a gene, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classGenePanel_a416e0c1c177422423825559c59f07272}\index{GenePanel@{GenePanel}!SaveAsBinary@{SaveAsBinary}}
+\index{SaveAsBinary@{SaveAsBinary}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinary()}{SaveAsBinary()}}
+{\footnotesize\ttfamily \label{classGenePanel_a416e0c1c177422423825559c59f07272} 
+void Gene\+Panel\+::\+Save\+As\+Binary (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the cell set in binary format in a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGenePanel_af8b59d938fae628c52e5a7bb5873e5ac}\index{GenePanel@{GenePanel}!SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}}
+\index{SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinaryWithDebug()}{SaveAsBinaryWithDebug()}}
+{\footnotesize\ttfamily \label{classGenePanel_af8b59d938fae628c52e5a7bb5873e5ac} 
+void Gene\+Panel\+::\+Save\+As\+Binary\+With\+Debug (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the gene panel in binary format in a file debugging the writing bytes process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGenePanel_a6a5c446b30d75a1537baf99dd29747a4}\index{GenePanel@{GenePanel}!Show@{Show}}
+\index{Show@{Show}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{classGenePanel_a6a5c446b30d75a1537baf99dd29747a4} 
+void Gene\+Panel\+::\+Show (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out}{, }\item[{char}]{sep}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}}\end{DoxyParamCaption})}
+
+
+
+Procedure to show all the data from the gene panel in .csv format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & \&ostream Reference to an output stream to show the information, like cout, cerr or an opened ofstream object \\
+\hline
+{\em sep} & char\+: character to be used as .csv separator, by default a comma \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classGenePanel_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGenePanel_af48cbf020beede0e073b317306d8239c}\index{GenePanel@{GenePanel}!default\_chunksize\_for\_GenePanel@{default\_chunksize\_for\_GenePanel}}
+\index{default\_chunksize\_for\_GenePanel@{default\_chunksize\_for\_GenePanel}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{default\_chunksize\_for\_GenePanel}{default\_chunksize\_for\_GenePanel}}
+{\footnotesize\ttfamily \label{classGenePanel_af48cbf020beede0e073b317306d8239c} 
+const unsigned short Gene\+Panel\+::default\+\_\+chunksize\+\_\+for\+\_\+\+Gene\+Panel =16}
+
+Size of memory chunk to save the gene panel. 16 MB seems more than enough, even if we would have 20.\+0000 genes... \Hypertarget{classGenePanel_abb3d58f90620056df396371e48459170}\index{GenePanel@{GenePanel}!Target@{Target}}
+\index{Target@{Target}!GenePanel@{GenePanel}}
+\doxysubsubsection{\texorpdfstring{Target}{Target}}
+{\footnotesize\ttfamily \label{classGenePanel_abb3d58f90620056df396371e48459170} 
+const int Gene\+Panel\+::\+Target =0}
+
+This is because genes in category current are the targets, and we have stored current at place 0 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Genepanel.\+h\item 
+Genepanel.\+cpp\end{DoxyCompactItemize}

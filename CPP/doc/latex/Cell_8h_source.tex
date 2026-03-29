@@ -1,0 +1,66 @@
+\doxysection{Cell.\+h}
+\hypertarget{Cell_8h_source}{}\label{Cell_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_CELL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_CELL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}debugging.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}auxbin.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Forward\ declaration,\ since\ we\ need\ CellSet\ to\ be\ a\ friend\ class\ of\ Cell}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellSet}{CellSet}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell_aa5f8a936086d8fe47d0caf914e82419a}{Cell}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classCell_aa5f8a936086d8fe47d0caf914e82419a}{Cell}}(std::string\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{float}\ x,\textcolor{keywordtype}{float}\ y,\textcolor{keywordtype}{int}\ trc,\textcolor{keywordtype}{int}\ cpc,\textcolor{keywordtype}{int}\ ccc,\textcolor{keywordtype}{int}\ ucc,\textcolor{keywordtype}{int}\ dcc,\textcolor{keywordtype}{int}\ tc,\textcolor{keywordtype}{float}\ area,\textcolor{keywordtype}{float}\ nuc\_area,\textcolor{keywordtype}{bool}\ \&err);}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{classCell_aa5f8a936086d8fe47d0caf914e82419a}{Cell}}(InputBufferedFile\ \&f,\textcolor{keywordtype}{size\_t}\ \&nbc,\textcolor{keywordtype}{size\_t}\ \&nnc);}
+\DoxyCodeLine{00050\ \ \ std::string\ \mbox{\hyperlink{classCell_a7dbc6a1bd2653c7316b1d2a2b7505a7d}{GetId}}()\ \{\ \textcolor{keywordflow}{return}(\textcolor{keywordtype}{id});\ \};}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCell_a559281b2db6fdcd13def27cc1d62777a}{GetX}}()\ \{\ \textcolor{keywordflow}{return}(x);\ \};}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCell_a9bd0aafb55c6e99d36bcb2d97ffb299e}{GetY}}()\ \{\ \textcolor{keywordflow}{return}(y);\ \};}
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_ab8758be8ca2c87f23200d2328acde7f0}{GetTranscriptC}}()\ \{\ \textcolor{keywordflow}{return}(trc);\ \};}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_a6ce398292da5e73c769f850d8f955a14}{GetControlProbeC}}()\ \{\ \textcolor{keywordflow}{return}(cpc);\ \};}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_a48fee729df8a77f747975e914a279b29}{GetControlCodewordC}}()\ \{\ \textcolor{keywordflow}{return}(ccc);\ \};}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_aaa160f8e1514226dcaa44229c4a224fe}{GetUnassignedCodewordC}}()\ \{\ \textcolor{keywordflow}{return}(ucc);\ \};}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_a54844cb7b19f3e3094ad0e92e2c7f43c}{GetDeprecatedCodewordC}}()\ \{\ \textcolor{keywordflow}{return}(dcc);\ \};}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_a2a77ee13375f0dfa39e38465725da1cf}{GetTotalC}}()\ \{\ \textcolor{keywordflow}{return}(tc);\ \};}
+\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCell_ae92302522c94962781e80aae79b21ee5}{GetArea}}()\ \{\ \textcolor{keywordflow}{return}(area);\ \};}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCell_ac35ec9e9b0dda0026846b50364eb41c1}{GetNucArea}}()\ \{\ \textcolor{keywordflow}{return}(nuc\_area);\ \};}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCell_a47f7e3b95be476d2b843258bc8a3c2ab}{GetCluster}}()\ \{\ \textcolor{keywordflow}{return}(cluster);\ \};}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_a114e2f3a029907ff08c0080085a45b80}{SetCluster}}(\textcolor{keywordtype}{int}\ clc)\ \{\ cluster=clc;\ \};}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCell_ae48d1e742f34e5cb8b74ce40a724154f}{GetAreaRatio}}()\ \{\ \textcolor{keywordflow}{return}(nuc\_area/area);\ \};}
+\DoxyCodeLine{00121\ \ \ std::string\ \mbox{\hyperlink{classCell_aebb8d3b91ee80e2e8ee81aec6d31b766}{GetAll}}(\textcolor{keywordtype}{char}\ csep,\textcolor{keywordtype}{bool}\ getclus);}
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classCellSet}{CellSet}};}
+\DoxyCodeLine{00123\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00124\ \ \ std::string\ id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keywordtype}{float}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{float}\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{int}\ trc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{int}\ cpc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordtype}{int}\ ccc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{int}\ ucc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{int}\ dcc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{int}\ tc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{float}\ area;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordtype}{float}\ nuc\_area;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{int}\ cluster;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ std::vector<float>\ cboundx;}
+\DoxyCodeLine{00137\ \ \ std::vector<float>\ cboundy;\ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ std::vector<float>\ nuccboundx;}
+\DoxyCodeLine{00139\ \ \ std::vector<float>\ nuccboundy;\ \ }
+\DoxyCodeLine{00140\ \ \ std::vector<size\_t>\ startpoints;\ \ }
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordtype}{void}\ SaveAsBinary(OutputBufferedFile\ \&f);}
+\DoxyCodeLine{00142\ \};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

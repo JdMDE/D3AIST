@@ -1,0 +1,274 @@
+\doxysection{Transcript Class Reference}
+\hypertarget{classTranscript}{}\label{classTranscript}\index{Transcript@{Transcript}}
+
+
+\doxylink{classTranscript}{Transcript} class.  
+
+
+
+
+{\ttfamily \#include "{}Transcript.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTranscript_ae1bf426d7495de6080b564606f47c0c3}{Transcript}} (unsigned long long idp, std\+::string cell\+\_\+idp, bool overlap\+\_\+nucp, std\+::string feat\+\_\+namep, float xp, float yp, float zp, int qvp, std\+::string fov\+\_\+namep, float nuc\+\_\+distp, int codewordp, bool \&err)
+\item 
+\mbox{\hyperlink{classTranscript_a140d73a45582ae7e0531c23480c75368}{Transcript}} (Input\+Buffered\+File \&f)
+\item 
+unsigned long long \mbox{\hyperlink{classTranscript_ad60ed3ce5334ade63760a96dd9f52afb}{Get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the unique event identifier. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscript_a2329948a9cbd04e7100d7ea9f978ebc9}{Get\+Cell\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the unique cell identifier inside which this even happened, which can be UNASSIGNED if outside any cell. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTranscript_ab131ce4ce2cba87c967b864a66122648}{Overlap\+Nucleus}} ()
+\begin{DoxyCompactList}\small\item\em Function to check if the event happened inside the cell nucleus or not. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscript_aaec756b366814e75f7c61057c362bced}{Get\+Feature\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the name of the gene or clonotype that originates this event. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscript_afd00f397dd66150bf34b16097c334909}{GetX}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the x coordinate of the event in micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscript_a6d00b401744bf6fd3383f30f7c8fdffc}{GetY}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the y coordinate of the event in micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscript_a31360f1800cf29a5f9ce89af9dde3ced}{GetZ}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the z coordinate of the event in micrometers. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscript_ab23ee490857794a3339393993f60f155}{Get\+Qv}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the quality index assigned to the event. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscript_ad86d806abd675159a08f2c5c97496d90}{Get\+FOV}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the identifier of the area in which the event happened. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTranscript_a29be07952d060b6a9e4e4296b84269cb}{Get\+Nucleus\+Dist}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the distance from the event to the closest cell nucleus. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTranscript_aeea435f38c89ce4d20db6cf52af92cf1}{Get\+Codeword}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the codeword of the gene or clonotype that generated this event. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTranscript_a79d3220a46ab31ef36bf4d0bc4eca573}{Get\+All}} (char csep)
+\begin{DoxyCompactList}\small\item\em Function to return all the information about a transcription event as a text line with fields separated by the requested character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTranscript_a20c58d1c18ceda09b2c56abe976f6b91}\label{classTranscript_a20c58d1c18ceda09b2c56abe976f6b91} 
+friend {\bfseries Transcript\+Set}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classTranscript}{Transcript} class. 
+
+\doxylink{classTranscript}{Transcript}\+: a class to hold all information about a transcription event from a spatial transcriptomics description file in .csv or binary format 
+
+\label{doc-constructors}
+\Hypertarget{classTranscript_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTranscript_ae1bf426d7495de6080b564606f47c0c3}\index{Transcript@{Transcript}!Transcript@{Transcript}}
+\index{Transcript@{Transcript}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{Transcript()}{Transcript()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classTranscript_ae1bf426d7495de6080b564606f47c0c3} 
+Transcript\+::\+Transcript (\begin{DoxyParamCaption}\item[{unsigned long long}]{idp}{, }\item[{std\+::string}]{cell\+\_\+idp}{, }\item[{bool}]{overlap\+\_\+nucp}{, }\item[{std\+::string}]{feat\+\_\+namep}{, }\item[{float}]{xp}{, }\item[{float}]{yp}{, }\item[{float}]{zp}{, }\item[{int}]{qvp}{, }\item[{std\+::string}]{fov\+\_\+namep}{, }\item[{float}]{nuc\+\_\+distp}{, }\item[{int}]{codewordp}{, }\item[{bool \&}]{err}{}\end{DoxyParamCaption})}
+
+Constructor that reads all relevant information from the .csv file and store it inside the class after doing some basic sanity checks 
+\begin{DoxyParams}{Parameters}
+{\em idp} & unsigned long long\+: the transcription event identifier \\
+\hline
+{\em cell\+\_\+idp} & string\+: unique identifier of the cell inside which the event transcription happens, or UNASSIGNED if happens outside any cell \\
+\hline
+{\em overlap\+\_\+nucp} & bool\+: true if the event happens inside the cell nucleus, false otherwise (even if outside cell) \\
+\hline
+{\em feat\+\_\+namep} & string\+: the identifier of the gene or clonotype that has generated this transcription event \\
+\hline
+{\em xp} & float\+: the x-\/coordinate of the event, in micrometers \\
+\hline
+{\em yp} & float\+: the y-\/coordinate of the event, in micrometers \\
+\hline
+{\em zp} & float\+: the z-\/coordinate of the event, in micrometers \\
+\hline
+{\em qvp} & int\+: the quality value that measures the confidence on correct assignment of this event to a gene or clonotype. Values in 0..40 \\
+\hline
+{\em fov\+\_\+namep} & string\+: identifier of the region in histopathological image where the event has happened \\
+\hline
+{\em nuc\+\_\+distp} & float\+: distance between the event and the closest cell nucleus, or 0 if event happend inside cell nucleus \\
+\hline
+{\em codewordp} & int\+: number asiigned to the gene or clonotype that has generated this trancription event, i.\+e., feat\+\_\+namep. \\
+\hline
+{\em err} & \&bool\+: Test variable that returns with true if all values pass the checks and transcript has been constructed and false if not. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTranscript_a140d73a45582ae7e0531c23480c75368}\index{Transcript@{Transcript}!Transcript@{Transcript}}
+\index{Transcript@{Transcript}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{Transcript()}{Transcript()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classTranscript_a140d73a45582ae7e0531c23480c75368} 
+Transcript\+::\+Transcript (\begin{DoxyParamCaption}\item[{Input\+Buffered\+File \&}]{f}{}\end{DoxyParamCaption})}
+
+Constructor that read all relevant information from a binary opened Input\+Bufered\+File 
+\begin{DoxyParams}{Parameters}
+{\em f} & Input\+Bufered\+File Reference to a previously opened binary file \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classTranscript_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTranscript_a79d3220a46ab31ef36bf4d0bc4eca573}\index{Transcript@{Transcript}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetAll()}{GetAll()}}
+{\footnotesize\ttfamily \label{classTranscript_a79d3220a46ab31ef36bf4d0bc4eca573} 
+string Transcript\+::\+Get\+All (\begin{DoxyParamCaption}\item[{char}]{csep}{}\end{DoxyParamCaption})}
+
+
+
+Function to return all the information about a transcription event as a text line with fields separated by the requested character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csep} & char\+: The separation character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string\+: The line with the information (without any final carriage return/new line character) 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_a2329948a9cbd04e7100d7ea9f978ebc9}\index{Transcript@{Transcript}!GetCellId@{GetCellId}}
+\index{GetCellId@{GetCellId}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetCellId()}{GetCellId()}}
+{\footnotesize\ttfamily \label{classTranscript_a2329948a9cbd04e7100d7ea9f978ebc9} 
+std\+::string Transcript\+::\+Get\+Cell\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the unique cell identifier inside which this even happened, which can be UNASSIGNED if outside any cell. 
+
+\begin{DoxyReturn}{Returns}
+string The cell id or UNASSIGNED 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_aeea435f38c89ce4d20db6cf52af92cf1}\index{Transcript@{Transcript}!GetCodeword@{GetCodeword}}
+\index{GetCodeword@{GetCodeword}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetCodeword()}{GetCodeword()}}
+{\footnotesize\ttfamily \label{classTranscript_aeea435f38c89ce4d20db6cf52af92cf1} 
+int Transcript\+::\+Get\+Codeword (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the codeword of the gene or clonotype that generated this event. 
+
+\begin{DoxyReturn}{Returns}
+int The gene or clonotype codeword 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_aaec756b366814e75f7c61057c362bced}\index{Transcript@{Transcript}!GetFeatureName@{GetFeatureName}}
+\index{GetFeatureName@{GetFeatureName}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetFeatureName()}{GetFeatureName()}}
+{\footnotesize\ttfamily \label{classTranscript_aaec756b366814e75f7c61057c362bced} 
+std\+::string Transcript\+::\+Get\+Feature\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the name of the gene or clonotype that originates this event. 
+
+\begin{DoxyReturn}{Returns}
+string \doxylink{classGene}{Gene} or clonotype identifier 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_ad86d806abd675159a08f2c5c97496d90}\index{Transcript@{Transcript}!GetFOV@{GetFOV}}
+\index{GetFOV@{GetFOV}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetFOV()}{GetFOV()}}
+{\footnotesize\ttfamily \label{classTranscript_ad86d806abd675159a08f2c5c97496d90} 
+std\+::string Transcript\+::\+Get\+FOV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the identifier of the area in which the event happened. 
+
+\begin{DoxyReturn}{Returns}
+string An area indentifier 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_ad60ed3ce5334ade63760a96dd9f52afb}\index{Transcript@{Transcript}!GetId@{GetId}}
+\index{GetId@{GetId}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{classTranscript_ad60ed3ce5334ade63760a96dd9f52afb} 
+unsigned long long Transcript\+::\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the unique event identifier. 
+
+\begin{DoxyReturn}{Returns}
+long long The number assigned to the event 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_a29be07952d060b6a9e4e4296b84269cb}\index{Transcript@{Transcript}!GetNucleusDist@{GetNucleusDist}}
+\index{GetNucleusDist@{GetNucleusDist}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetNucleusDist()}{GetNucleusDist()}}
+{\footnotesize\ttfamily \label{classTranscript_a29be07952d060b6a9e4e4296b84269cb} 
+float Transcript\+::\+Get\+Nucleus\+Dist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the distance from the event to the closest cell nucleus. 
+
+\begin{DoxyReturn}{Returns}
+float Distance event-\/nucleus boundary, or 0 if event happens inside nucleus 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_ab23ee490857794a3339393993f60f155}\index{Transcript@{Transcript}!GetQv@{GetQv}}
+\index{GetQv@{GetQv}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetQv()}{GetQv()}}
+{\footnotesize\ttfamily \label{classTranscript_ab23ee490857794a3339393993f60f155} 
+float Transcript\+::\+Get\+Qv (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the quality index assigned to the event. 
+
+\begin{DoxyReturn}{Returns}
+int Value in 0 (totally unconfident) to 40 (totally confident) 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_afd00f397dd66150bf34b16097c334909}\index{Transcript@{Transcript}!GetX@{GetX}}
+\index{GetX@{GetX}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily \label{classTranscript_afd00f397dd66150bf34b16097c334909} 
+float Transcript\+::\+GetX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the x coordinate of the event in micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float x-\/value 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_a6d00b401744bf6fd3383f30f7c8fdffc}\index{Transcript@{Transcript}!GetY@{GetY}}
+\index{GetY@{GetY}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily \label{classTranscript_a6d00b401744bf6fd3383f30f7c8fdffc} 
+float Transcript\+::\+GetY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the y coordinate of the event in micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float y-\/value 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_a31360f1800cf29a5f9ce89af9dde3ced}\index{Transcript@{Transcript}!GetZ@{GetZ}}
+\index{GetZ@{GetZ}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{GetZ()}{GetZ()}}
+{\footnotesize\ttfamily \label{classTranscript_a31360f1800cf29a5f9ce89af9dde3ced} 
+float Transcript\+::\+GetZ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the z coordinate of the event in micrometers. 
+
+\begin{DoxyReturn}{Returns}
+float z-\/value 
+\end{DoxyReturn}
+\Hypertarget{classTranscript_ab131ce4ce2cba87c967b864a66122648}\index{Transcript@{Transcript}!OverlapNucleus@{OverlapNucleus}}
+\index{OverlapNucleus@{OverlapNucleus}!Transcript@{Transcript}}
+\doxysubsubsection{\texorpdfstring{OverlapNucleus()}{OverlapNucleus()}}
+{\footnotesize\ttfamily \label{classTranscript_ab131ce4ce2cba87c967b864a66122648} 
+bool Transcript\+::\+Overlap\+Nucleus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to check if the event happened inside the cell nucleus or not. 
+
+\begin{DoxyReturn}{Returns}
+bool true if event happened inside nucleus, false otherwise (including outside any cell) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Transcript.\+h\item 
+Transcript.\+cpp\end{DoxyCompactItemize}

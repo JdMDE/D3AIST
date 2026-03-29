@@ -1,0 +1,56 @@
+\doxysection{Transcript.\+h}
+\hypertarget{Transcript_8h_source}{}\label{Transcript_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_TRANSCRIPT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_TRANSCRIPT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}debugging.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}auxbin.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Forward\ declaration\ of\ TranscriptSet,\ since\ it\ needs\ to\ be\ a\ friend\ class\ of\ Transcript}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTranscriptSet}{TranscriptSet}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTranscript_ae1bf426d7495de6080b564606f47c0c3}{Transcript}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classTranscript_ae1bf426d7495de6080b564606f47c0c3}{Transcript}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ idp,std::string\ cell\_idp,\textcolor{keywordtype}{bool}\ overlap\_nucp,std::string\ feat\_namep,\textcolor{keywordtype}{float}\ xp,\textcolor{keywordtype}{float}\ yp,\textcolor{keywordtype}{float}\ zp,\textcolor{keywordtype}{int}\ qvp,std::string\ fov\_namep,\textcolor{keywordtype}{float}\ nuc\_distp,\textcolor{keywordtype}{int}\ codewordp,\textcolor{keywordtype}{bool}\ \&err);}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classTranscript_ae1bf426d7495de6080b564606f47c0c3}{Transcript}}(InputBufferedFile\ \&f);}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classTranscript_ad60ed3ce5334ade63760a96dd9f52afb}{GetId}}()\ \{\ \textcolor{keywordflow}{return}(\textcolor{keywordtype}{id});\ \};}
+\DoxyCodeLine{00052\ \ \ std::string\ \mbox{\hyperlink{classTranscript_a2329948a9cbd04e7100d7ea9f978ebc9}{GetCellId}}()\ \{\ \textcolor{keywordflow}{return}(cell\_id);\ \};}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTranscript_ab131ce4ce2cba87c967b864a66122648}{OverlapNucleus}}()\ \{\ \textcolor{keywordflow}{return}(overlap\_nuc);\ \};}
+\DoxyCodeLine{00062\ \ \ std::string\ \mbox{\hyperlink{classTranscript_aaec756b366814e75f7c61057c362bced}{GetFeatureName}}()\ \{\ \textcolor{keywordflow}{return}(feat\_name);\ \};}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscript_afd00f397dd66150bf34b16097c334909}{GetX}}()\ \{\ \textcolor{keywordflow}{return}(x);\ \};}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscript_a6d00b401744bf6fd3383f30f7c8fdffc}{GetY}}()\ \{\ \textcolor{keywordflow}{return}(y);\ \};}
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscript_a31360f1800cf29a5f9ce89af9dde3ced}{GetZ}}()\ \{\ \textcolor{keywordflow}{return}(z);\ \};}
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscript_ab23ee490857794a3339393993f60f155}{GetQv}}()\ \{\ \textcolor{keywordflow}{return}(qv);\ \};}
+\DoxyCodeLine{00087\ \ \ std::string\ \mbox{\hyperlink{classTranscript_ad86d806abd675159a08f2c5c97496d90}{GetFOV}}()\ \{\ \textcolor{keywordflow}{return}(fov\_name);\ \};}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscript_a29be07952d060b6a9e4e4296b84269cb}{GetNucleusDist}}()\ \{\ \textcolor{keywordflow}{return}(nuc\_dist);\ \};}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTranscript_aeea435f38c89ce4d20db6cf52af92cf1}{GetCodeword}}()\ \{\ \textcolor{keywordflow}{return}(codeword);\ \};}
+\DoxyCodeLine{00103\ \ \ std::string\ \mbox{\hyperlink{classTranscript_a79d3220a46ab31ef36bf4d0bc4eca573}{GetAll}}(\textcolor{keywordtype}{char}\ csep);}
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classTranscriptSet}{TranscriptSet}};}
+\DoxyCodeLine{00105\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{bool}\ ValidRegionName(\ std::string\ rname\ );}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ id;}
+\DoxyCodeLine{00108\ \ \ std::string\ cell\_id;}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{bool}\ overlap\_nuc;}
+\DoxyCodeLine{00110\ \ \ std::string\ feat\_name;}
+\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{float}\ z;}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{float}\ qv;}
+\DoxyCodeLine{00115\ \ \ std::string\ fov\_name;}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{float}\ nuc\_dist;}
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{int}\ codeword;}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{void}\ SaveAsBinary(OutputBufferedFile\ \&f);}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122\ }
+
+\end{DoxyCode}

@@ -1,0 +1,244 @@
+\doxysection{Cell\+Set Class Reference}
+\hypertarget{classCellSet}{}\label{classCellSet}\index{CellSet@{CellSet}}
+
+
+Cellset class.  
+
+
+
+
+{\ttfamily \#include "{}Cellset.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellSet_a173f5ab731a5a731329f2673b2af7ed3}{Cell\+Set}} (std\+::string cells\+\_\+file\+\_\+name, bool check=false)
+\begin{DoxyCompactList}\small\item\em \doxylink{classCellSet}{Cell\+Set} constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellSet_af88fe42fe626337db6aeb006214f28c0}{Show}} (std\+::ostream \&out, char sep=\textquotesingle{},\textquotesingle{}, bool getcl=false)
+\begin{DoxyCompactList}\small\item\em Procedure to show all the data from the cell set in .csv format. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classCellSet_a76c0bc66d91ac32da676ab6e1d722984}{Num\+Cells}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the number of cells in the cell set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCell}{Cell}} \& \mbox{\hyperlink{classCellSet_a3f915e3c2e60e103d3aa9a15d75a06df}{Get\+Cell\+Ref}} (std\+::string idc)
+\begin{DoxyCompactList}\small\item\em Function to return a reference to the cell from its cell identifier. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCellSet_a17561067b33fc39bde128257943d4cf8}{Get\+Area\+Ratio}} (std\+::string idc)
+\begin{DoxyCompactList}\small\item\em Function to return the ratio between cell nucleus area and cell area of a cell from its cell identifier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellSet_a7626b0e1e505d36040f6c8dde277464c}{Add\+Cluster\+Info}} (std\+::string clfile)
+\begin{DoxyCompactList}\small\item\em Function to add the attibuted cluster to each cell reading it from an external .csv file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellSet_ab7dafaf2152ed2ecf0ca2f94223669e6}{Add\+Boundary\+Info}} (std\+::string bfile, bool cellboundary)
+\begin{DoxyCompactList}\small\item\em Function to load the cell or nucleus boundaries from an external .csv file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCellSet_a4929dfcf6e06a8e0e9fdb3282c688540}{Get\+Att\+Clust}} (std\+::string idc)
+\begin{DoxyCompactList}\small\item\em Function to return the attributed cluster of a cell from its cell identifier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellSet_a544eaad2fe9793b4634b6a5aa8f668c6}{Save\+As\+Binary\+With\+Debug}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the cell set in binary format in a file debugging the writing bytes process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellSet_a881c605c3b65ca74f827a5a3217532e3}{Save\+As\+Binary}} (std\+::string fname)
+\begin{DoxyCompactList}\small\item\em Procedure to save the cell set in binary format in a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned short \mbox{\hyperlink{classCellSet_a3a2b3faafea45a74c32dbf5feaebf00d}{default\+\_\+chunksize\+\_\+for\+\_\+\+Cell\+Set}} =128
+\item 
+const int \mbox{\hyperlink{classCellSet_a169fca5401c1cb96550998c0ba876938}{Unknown\+Cluster}} =-\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cellset class. 
+
+Class \doxylink{classCellSet}{Cell\+Set}\+: a class to hold all information about a set of cells read from the cell description file in .csv or binary format 
+
+\label{doc-constructors}
+\Hypertarget{classCellSet_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCellSet_a173f5ab731a5a731329f2673b2af7ed3}\index{CellSet@{CellSet}!CellSet@{CellSet}}
+\index{CellSet@{CellSet}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{CellSet()}{CellSet()}}
+{\footnotesize\ttfamily \label{classCellSet_a173f5ab731a5a731329f2673b2af7ed3} 
+Cell\+Set\+::\+Cell\+Set (\begin{DoxyParamCaption}\item[{std\+::string}]{cells\+\_\+file\+\_\+name}{, }\item[{bool}]{check}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{classCellSet}{Cell\+Set} constructor. 
+
+Constructor that takes the requested binary or .csv cell description file, reads from it all relevant information and stores it inside the class. File type (binary or .csv) is determined from its extension. 
+\begin{DoxyParams}{Parameters}
+{\em cells\+\_\+file\+\_\+name} & string\+: The name (if accessible) or complete path of the .csv or binary file \\
+\hline
+{\em check} & bool\+: true to check that there are no any cells with duplicate identifiers. This check is slow, so the parameter is by default false. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classCellSet_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCellSet_ab7dafaf2152ed2ecf0ca2f94223669e6}\index{CellSet@{CellSet}!AddBoundaryInfo@{AddBoundaryInfo}}
+\index{AddBoundaryInfo@{AddBoundaryInfo}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{AddBoundaryInfo()}{AddBoundaryInfo()}}
+{\footnotesize\ttfamily \label{classCellSet_ab7dafaf2152ed2ecf0ca2f94223669e6} 
+void Cell\+Set\+::\+Add\+Boundary\+Info (\begin{DoxyParamCaption}\item[{std\+::string}]{bfile}{, }\item[{bool}]{cellboundary}{}\end{DoxyParamCaption})}
+
+
+
+Function to load the cell or nucleus boundaries from an external .csv file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bfile} & string with the name of the .csv cell or nucleus boundaries file \\
+\hline
+{\em cellboundary} & bool, true for setting the cell boundaries and false to set nucleus boundaries \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellSet_a7626b0e1e505d36040f6c8dde277464c}\index{CellSet@{CellSet}!AddClusterInfo@{AddClusterInfo}}
+\index{AddClusterInfo@{AddClusterInfo}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{AddClusterInfo()}{AddClusterInfo()}}
+{\footnotesize\ttfamily \label{classCellSet_a7626b0e1e505d36040f6c8dde277464c} 
+void Cell\+Set\+::\+Add\+Cluster\+Info (\begin{DoxyParamCaption}\item[{std\+::string}]{clfile}{}\end{DoxyParamCaption})}
+
+
+
+Function to add the attibuted cluster to each cell reading it from an external .csv file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clfile} & string with the name of the .csv clusters file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellSet_a17561067b33fc39bde128257943d4cf8}\index{CellSet@{CellSet}!GetAreaRatio@{GetAreaRatio}}
+\index{GetAreaRatio@{GetAreaRatio}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{GetAreaRatio()}{GetAreaRatio()}}
+{\footnotesize\ttfamily \label{classCellSet_a17561067b33fc39bde128257943d4cf8} 
+float Cell\+Set\+::\+Get\+Area\+Ratio (\begin{DoxyParamCaption}\item[{std\+::string}]{idc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the ratio between cell nucleus area and cell area of a cell from its cell identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idc} & string the cell unique identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float\+: the nucleus area/cell area ratio, in \mbox{[}0..1\mbox{]} 
+\end{DoxyReturn}
+\Hypertarget{classCellSet_a4929dfcf6e06a8e0e9fdb3282c688540}\index{CellSet@{CellSet}!GetAttClust@{GetAttClust}}
+\index{GetAttClust@{GetAttClust}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{GetAttClust()}{GetAttClust()}}
+{\footnotesize\ttfamily \label{classCellSet_a4929dfcf6e06a8e0e9fdb3282c688540} 
+int Cell\+Set\+::\+Get\+Att\+Clust (\begin{DoxyParamCaption}\item[{std\+::string}]{idc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the attributed cluster of a cell from its cell identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idc} & string the cell unique identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: the number of the cluster attributed to this cell 
+\end{DoxyReturn}
+\Hypertarget{classCellSet_a3f915e3c2e60e103d3aa9a15d75a06df}\index{CellSet@{CellSet}!GetCellRef@{GetCellRef}}
+\index{GetCellRef@{GetCellRef}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{GetCellRef()}{GetCellRef()}}
+{\footnotesize\ttfamily \label{classCellSet_a3f915e3c2e60e103d3aa9a15d75a06df} 
+\mbox{\hyperlink{classCell}{Cell}} \& Cell\+Set\+::\+Get\+Cell\+Ref (\begin{DoxyParamCaption}\item[{std\+::string}]{idc}{}\end{DoxyParamCaption})}
+
+
+
+Function to return a reference to the cell from its cell identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idc} & string the cell identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\&\doxylink{classCell}{Cell}\+: the reference to the cell 
+\end{DoxyReturn}
+\Hypertarget{classCellSet_a76c0bc66d91ac32da676ab6e1d722984}\index{CellSet@{CellSet}!NumCells@{NumCells}}
+\index{NumCells@{NumCells}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{NumCells()}{NumCells()}}
+{\footnotesize\ttfamily \label{classCellSet_a76c0bc66d91ac32da676ab6e1d722984} 
+size\+\_\+t Cell\+Set\+::\+Num\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the number of cells in the cell set. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t\+: the number of cells currently in the cell set 
+\end{DoxyReturn}
+\Hypertarget{classCellSet_a881c605c3b65ca74f827a5a3217532e3}\index{CellSet@{CellSet}!SaveAsBinary@{SaveAsBinary}}
+\index{SaveAsBinary@{SaveAsBinary}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinary()}{SaveAsBinary()}}
+{\footnotesize\ttfamily \label{classCellSet_a881c605c3b65ca74f827a5a3217532e3} 
+void Cell\+Set\+::\+Save\+As\+Binary (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the cell set in binary format in a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellSet_a544eaad2fe9793b4634b6a5aa8f668c6}\index{CellSet@{CellSet}!SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}}
+\index{SaveAsBinaryWithDebug@{SaveAsBinaryWithDebug}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{SaveAsBinaryWithDebug()}{SaveAsBinaryWithDebug()}}
+{\footnotesize\ttfamily \label{classCellSet_a544eaad2fe9793b4634b6a5aa8f668c6} 
+void Cell\+Set\+::\+Save\+As\+Binary\+With\+Debug (\begin{DoxyParamCaption}\item[{std\+::string}]{fname}{}\end{DoxyParamCaption})}
+
+
+
+Procedure to save the cell set in binary format in a file debugging the writing bytes process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & string The name of the file to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellSet_af88fe42fe626337db6aeb006214f28c0}\index{CellSet@{CellSet}!Show@{Show}}
+\index{Show@{Show}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{classCellSet_af88fe42fe626337db6aeb006214f28c0} 
+void Cell\+Set\+::\+Show (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out}{, }\item[{char}]{sep}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}, }\item[{bool}]{getcl}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Procedure to show all the data from the cell set in .csv format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & \&ostream Reference to an output stream to show the information, like cout, cerr or an opened ofstream object \\
+\hline
+{\em sep} & char\+: character to be used as .csv separator, by default a comma \\
+\hline
+{\em getcl} & bool\+: true if the attributed cluster should be shown, too. False if not. Default\+: false \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classCellSet_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCellSet_a3a2b3faafea45a74c32dbf5feaebf00d}\index{CellSet@{CellSet}!default\_chunksize\_for\_CellSet@{default\_chunksize\_for\_CellSet}}
+\index{default\_chunksize\_for\_CellSet@{default\_chunksize\_for\_CellSet}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{default\_chunksize\_for\_CellSet}{default\_chunksize\_for\_CellSet}}
+{\footnotesize\ttfamily \label{classCellSet_a3a2b3faafea45a74c32dbf5feaebf00d} 
+const unsigned short Cell\+Set\+::default\+\_\+chunksize\+\_\+for\+\_\+\+Cell\+Set =128}
+
+Size of memory chunk to save the cell set. 32 MB seems more than enough, even if we would have 900.\+000 cells... \Hypertarget{classCellSet_a169fca5401c1cb96550998c0ba876938}\index{CellSet@{CellSet}!UnknownCluster@{UnknownCluster}}
+\index{UnknownCluster@{UnknownCluster}!CellSet@{CellSet}}
+\doxysubsubsection{\texorpdfstring{UnknownCluster}{UnknownCluster}}
+{\footnotesize\ttfamily \label{classCellSet_a169fca5401c1cb96550998c0ba876938} 
+const int Cell\+Set\+::\+Unknown\+Cluster =-\/1}
+
+Constant to indicate that a cell has not been attributed (at least, not yet) to any cluster 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cellset.\+h\item 
+Cellset.\+cpp\end{DoxyCompactItemize}

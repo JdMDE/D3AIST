@@ -1,0 +1,204 @@
+\doxysection{Gene Class Reference}
+\hypertarget{classGene}{}\label{classGene}\index{Gene@{Gene}}
+
+
+\doxylink{classGene}{Gene} class.  
+
+
+
+
+{\ttfamily \#include "{}Gene.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGene_afc7912459dbef68e7165144fe7b1807d}{Gene}} (int cw, int gc, std\+::string cat, std\+::string gid, std\+::string gname, std\+::string gd, bool \&err)
+\item 
+\mbox{\hyperlink{classGene_a4735a06da26d493f0fe2b16dbda181c0}{Gene}} (Input\+Buffered\+File \&f)
+\item 
+int \mbox{\hyperlink{classGene_a5b2ea0cc142d67a27ba17d493b0a04e7}{Get\+Codeword}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene codeword. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGene_a1a348cdca335eb9c2dc13b8d38beef54}{Get\+Coverage}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene coverage. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGene_a6eaf4bd358154029fa30bed780937575}{Get\+Cat}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene category (current or base) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGene_ad2a760dbd3839bed3bc415fdef818d0f}{Get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene ENSEMS identifier. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGene_aaa1c3153421cbedfe507b1e7b9a10af8}{Get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene short name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGene_a07ed6fe667ba9356a78d595b93cf0b26}{Get\+Desc}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the gene descriptor (gene or negative\+\_\+control) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGene_a3e5efe3bc0c51d4181ec0cf5c185efbf}{Is\+Gene}} ()
+\begin{DoxyCompactList}\small\item\em Function to check if the entity is a gene or not. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGene_a4eff447698be861df1f03e54e77bbea0}{Get\+All}} (char sep=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Function to return all the information about a gene as a text line with fields separated by the requested character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGene_a9650098ccff948139052e804040f2b6b}\label{classGene_a9650098ccff948139052e804040f2b6b} 
+friend {\bfseries Gene\+Panel}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classGene}{Gene} class. 
+
+\doxylink{classGene}{Gene}\+: a class to hold all information about a gene, clonotype or control from a spatial transcriptomics description file in a .csv or binary format gene panel 
+
+\label{doc-constructors}
+\Hypertarget{classGene_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGene_afc7912459dbef68e7165144fe7b1807d}\index{Gene@{Gene}!Gene@{Gene}}
+\index{Gene@{Gene}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{Gene()}{Gene()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGene_afc7912459dbef68e7165144fe7b1807d} 
+Gene\+::\+Gene (\begin{DoxyParamCaption}\item[{int}]{cw}{, }\item[{int}]{gc}{, }\item[{std\+::string}]{cat}{, }\item[{std\+::string}]{gid}{, }\item[{std\+::string}]{gname}{, }\item[{std\+::string}]{gd}{, }\item[{bool \&}]{err}{}\end{DoxyParamCaption})}
+
+Constructor that reads all relevant information from the .csv file and store it inside the class after doing some basic sanity checks 
+\begin{DoxyParams}{Parameters}
+{\em cw} & int\+: the codeword assigned to the gene or clonotype \\
+\hline
+{\em gc} & int\+: the gene coverage \\
+\hline
+{\em cat} & string\+: the gene category (current, if selected for the analysis, or base otherwise) \\
+\hline
+{\em gid} & string\+: the ENSEMS gene identifier \\
+\hline
+{\em gname} & string\+: the gene short name \\
+\hline
+{\em gd} & string\+: the descriptor of the entity (gene or negative\+\_\+control) \\
+\hline
+{\em err} & \&bool\+: Test variable that returns with true if all values pass the checks and transcript has been constructed and false if not. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGene_a4735a06da26d493f0fe2b16dbda181c0}\index{Gene@{Gene}!Gene@{Gene}}
+\index{Gene@{Gene}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{Gene()}{Gene()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGene_a4735a06da26d493f0fe2b16dbda181c0} 
+Gene\+::\+Gene (\begin{DoxyParamCaption}\item[{Input\+Buffered\+File \&}]{f}{}\end{DoxyParamCaption})}
+
+Constructor that read all relevant information from a binary opened Input\+Bufered\+File 
+\begin{DoxyParams}{Parameters}
+{\em f} & Input\+Bufered\+File Reference to a previously opened binary file \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classGene_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGene_a4eff447698be861df1f03e54e77bbea0}\index{Gene@{Gene}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetAll()}{GetAll()}}
+{\footnotesize\ttfamily \label{classGene_a4eff447698be861df1f03e54e77bbea0} 
+string Gene\+::\+Get\+All (\begin{DoxyParamCaption}\item[{char}]{sep}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}}\end{DoxyParamCaption})}
+
+
+
+Function to return all the information about a gene as a text line with fields separated by the requested character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sep} & char\+: The separation character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string\+: The line with the information (without any final carriage return/new line character) 
+\end{DoxyReturn}
+\Hypertarget{classGene_a6eaf4bd358154029fa30bed780937575}\index{Gene@{Gene}!GetCat@{GetCat}}
+\index{GetCat@{GetCat}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetCat()}{GetCat()}}
+{\footnotesize\ttfamily \label{classGene_a6eaf4bd358154029fa30bed780937575} 
+std\+::string Gene\+::\+Get\+Cat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene category (current or base) 
+
+\begin{DoxyReturn}{Returns}
+string The category 
+\end{DoxyReturn}
+\Hypertarget{classGene_a5b2ea0cc142d67a27ba17d493b0a04e7}\index{Gene@{Gene}!GetCodeword@{GetCodeword}}
+\index{GetCodeword@{GetCodeword}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetCodeword()}{GetCodeword()}}
+{\footnotesize\ttfamily \label{classGene_a5b2ea0cc142d67a27ba17d493b0a04e7} 
+int Gene\+::\+Get\+Codeword (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene codeword. 
+
+\begin{DoxyReturn}{Returns}
+int The codeword 
+\end{DoxyReturn}
+\Hypertarget{classGene_a1a348cdca335eb9c2dc13b8d38beef54}\index{Gene@{Gene}!GetCoverage@{GetCoverage}}
+\index{GetCoverage@{GetCoverage}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetCoverage()}{GetCoverage()}}
+{\footnotesize\ttfamily \label{classGene_a1a348cdca335eb9c2dc13b8d38beef54} 
+int Gene\+::\+Get\+Coverage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene coverage. 
+
+\begin{DoxyReturn}{Returns}
+int The coverage 
+\end{DoxyReturn}
+\Hypertarget{classGene_a07ed6fe667ba9356a78d595b93cf0b26}\index{Gene@{Gene}!GetDesc@{GetDesc}}
+\index{GetDesc@{GetDesc}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetDesc()}{GetDesc()}}
+{\footnotesize\ttfamily \label{classGene_a07ed6fe667ba9356a78d595b93cf0b26} 
+std\+::string Gene\+::\+Get\+Desc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene descriptor (gene or negative\+\_\+control) 
+
+\begin{DoxyReturn}{Returns}
+string The descriptor 
+\end{DoxyReturn}
+\Hypertarget{classGene_ad2a760dbd3839bed3bc415fdef818d0f}\index{Gene@{Gene}!GetId@{GetId}}
+\index{GetId@{GetId}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{classGene_ad2a760dbd3839bed3bc415fdef818d0f} 
+std\+::string Gene\+::\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene ENSEMS identifier. 
+
+\begin{DoxyReturn}{Returns}
+string The category 
+\end{DoxyReturn}
+\Hypertarget{classGene_aaa1c3153421cbedfe507b1e7b9a10af8}\index{Gene@{Gene}!GetName@{GetName}}
+\index{GetName@{GetName}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{classGene_aaa1c3153421cbedfe507b1e7b9a10af8} 
+std\+::string Gene\+::\+Get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to return the gene short name. 
+
+\begin{DoxyReturn}{Returns}
+string The name 
+\end{DoxyReturn}
+\Hypertarget{classGene_a3e5efe3bc0c51d4181ec0cf5c185efbf}\index{Gene@{Gene}!IsGene@{IsGene}}
+\index{IsGene@{IsGene}!Gene@{Gene}}
+\doxysubsubsection{\texorpdfstring{IsGene()}{IsGene()}}
+{\footnotesize\ttfamily \label{classGene_a3e5efe3bc0c51d4181ec0cf5c185efbf} 
+bool Gene\+::\+Is\+Gene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to check if the entity is a gene or not. 
+
+\begin{DoxyReturn}{Returns}
+bool True for a gene, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Gene.\+h\item 
+Gene.\+cpp\end{DoxyCompactItemize}

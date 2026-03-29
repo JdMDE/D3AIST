@@ -1,0 +1,59 @@
+\doxysection{Sp\+RData.\+h}
+\hypertarget{SpRData_8h_source}{}\label{SpRData_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SPRDATA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SPRDATA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ ITK\_LEGACY\_FUTURE\_REMOVE}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Gene.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Genepanel.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Cellset.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Transcript.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Transcriptset.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}imlimits.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}imparams.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}imtypes.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}SpPseudoImage.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSpRData_aae7e945db151cb64130a0270c26052b2}{SpRData}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classSpRData_aae7e945db151cb64130a0270c26052b2}{SpRData}}(\mbox{\hyperlink{structImParams}{ImParams}}\ \&ipar,\mbox{\hyperlink{classGenePanel}{GenePanel}}\ \&panelref,\mbox{\hyperlink{classCellSet}{CellSet}}\ \&csref,\mbox{\hyperlink{classTranscriptSet}{TranscriptSet}}\ \&tsref);}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classSpRData_a02a076af184c4a0e5083bcd5113ec721}{\string~SpRData}}()\ \{\ \textcolor{keywordflow}{if}\ (psima!=\textcolor{keyword}{nullptr})\ psima-\/>\string~SpPseudoImage();\ \};}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpRData_acd4888924d40945a7bbd83a1e0069902}{Build}}(std::string\ histname=\textcolor{stringliteral}{"{}none"{}});}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpRData_a7eb62a3a4c4f855a3c8607a5b4b81fa4}{Save}}(std::string\ outfname,\textcolor{keywordtype}{char}\ sep=\textcolor{charliteral}{','});}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpRData_a0b47a2b5c5c4c09ed3339cefec6cf6b2}{SaveAsImages}}(std::string\ outfname,std::string\ idescname);}
+\DoxyCodeLine{00057\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ std::string\ SkipComments(std::ifstream\ \&f);}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ IsInside(\textcolor{keywordtype}{float}\ x,\textcolor{keywordtype}{float}\ y)\ \{\ \textcolor{keywordflow}{return}\ ((ulx<=x)\ \&\&\ (x<=lrx)\ \&\&\ (uly<=y)\ \&\&\ (y<=lry));\ \};}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{bool}\ FindOrder(\textcolor{keywordtype}{int}\ ecode,\textcolor{keywordtype}{size\_t}\ \&order);}
+\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//void\ FillBackgroundImage(size\_t\ w,size\_t\ h,std::string\ bgn);}}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ ScriptBackgroundImage(std::string\ scr,std::string\ bgn);}
+\DoxyCodeLine{00063\ \ \ GenePanel\ \&panel;}
+\DoxyCodeLine{00064\ \ \ CellSet\ \&cs;}
+\DoxyCodeLine{00065\ \ \ TranscriptSet\ \&ts;}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{bool}\ pseudoimage\_built;}
+\DoxyCodeLine{00067\ \ \ SpPseudoImage::Spacing\ orig\_sp,reduced\_sp;}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{int}\ pix\_per\_bin;}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ origwidth,origheight;}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{float}\ ulx,uly,lrx,lry;}
+\DoxyCodeLine{00071\ \ \ std::string\ fov;}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{bool}\ extract\_by\_fov;}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{bool}\ only\_targets;}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{int}\ qvth;}
+\DoxyCodeLine{00075\ \ \ std::vector<int>\ ecodes;}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ genmarks;}
+\DoxyCodeLine{00077\ \ \ SpPseudoImage\ *psima;}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00081\ }
+
+\end{DoxyCode}

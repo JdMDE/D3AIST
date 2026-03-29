@@ -1,0 +1,27 @@
+\doxysection{gammatransf.\+h}
+\hypertarget{gammatransf_8h_source}{}\label{gammatransf_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GAMMATRANSF\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GAMMATRANSF\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ TPixInput,\ \textcolor{keyword}{class}\ TPixOutput>}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGammaTransf_a94e822600ddae080236a8283fa47a310}{GammaTransf}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{classGammaTransf_a94e822600ddae080236a8283fa47a310}{GammaTransf}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{classGammaTransf_a6fb3634c4fc7bfa6368d7ea875e78f96}{\string~GammaTransf}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGammaTransf_a6fa03b1427ab60b5a48ccb61e329e230}{SetGammaValue}}(\textcolor{keywordtype}{double}\ gamma)\ \{\ gamma\_value=gamma;\ \};}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{inline}\ TPixOutput\ \mbox{\hyperlink{classGammaTransf_af2a2b948a97f9a5be376ad64d8dcf640}{operator()}}(\textcolor{keyword}{const}\ TPixInput\ \&\ v)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ g;}
+\DoxyCodeLine{00030\ \ \ \ \ g\ =\ exp(gamma\_value*log(\textcolor{keywordtype}{double}(v)/mx));}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ TPixOutput(mx*g);}
+\DoxyCodeLine{00032\ \ \ \}}
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{double}\ gamma\_value;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{double}\ mx=double(itk::NumericTraits<TPixInput>::max());}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,56 @@
+\doxysection{Gamma\+Transf\texorpdfstring{$<$}{<} TPix\+Input, TPix\+Output \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGammaTransf}{}\label{classGammaTransf}\index{GammaTransf$<$ TPixInput, TPixOutput $>$@{GammaTransf$<$ TPixInput, TPixOutput $>$}}
+
+
+Class to implement a gamma transformation of the values of an image, as requested by ITK in the form of a functor.  
+
+
+
+
+{\ttfamily \#include "{}gammatransf.\+h"{}}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGammaTransf_a94e822600ddae080236a8283fa47a310}\label{classGammaTransf_a94e822600ddae080236a8283fa47a310} 
+{\bfseries Gamma\+Transf} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. Do not change. \end{DoxyCompactList}\item 
+\Hypertarget{classGammaTransf_a6fb3634c4fc7bfa6368d7ea875e78f96}\label{classGammaTransf_a6fb3634c4fc7bfa6368d7ea875e78f96} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Gamma\+Transf} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. Do not change. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGammaTransf_a6fa03b1427ab60b5a48ccb61e329e230}{Set\+Gamma\+Value}} (double gamma)
+\begin{DoxyCompactList}\small\item\em Procedure to set the gamma value. \end{DoxyCompactList}\item 
+\Hypertarget{classGammaTransf_af2a2b948a97f9a5be376ad64d8dcf640}\label{classGammaTransf_af2a2b948a97f9a5be376ad64d8dcf640} 
+TPix\+Output {\bfseries operator()} (const TPix\+Input \&v) const
+\begin{DoxyCompactList}\small\item\em Operator to implement the real trransformation, in this case, normalized\+\_\+output = (normalized\+\_\+input)\texorpdfstring{$^\wedge$}{\string^}gamma. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class TPix\+Input, class TPix\+Output$>$\newline
+class Gamma\+Transf$<$ TPix\+Input, TPix\+Output $>$}
+Class to implement a gamma transformation of the values of an image, as requested by ITK in the form of a functor. 
+
+\label{doc-func-members}
+\Hypertarget{classGammaTransf_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGammaTransf_a6fa03b1427ab60b5a48ccb61e329e230}\index{GammaTransf$<$ TPixInput, TPixOutput $>$@{GammaTransf$<$ TPixInput, TPixOutput $>$}!SetGammaValue@{SetGammaValue}}
+\index{SetGammaValue@{SetGammaValue}!GammaTransf$<$ TPixInput, TPixOutput $>$@{GammaTransf$<$ TPixInput, TPixOutput $>$}}
+\doxysubsubsection{\texorpdfstring{SetGammaValue()}{SetGammaValue()}}
+{\footnotesize\ttfamily \label{classGammaTransf_a6fa03b1427ab60b5a48ccb61e329e230} 
+template$<$class TPix\+Input, class TPix\+Output$>$ \\
+void \mbox{\hyperlink{classGammaTransf}{Gamma\+Transf}}$<$ TPix\+Input, TPix\+Output $>$\+::\+Set\+Gamma\+Value (\begin{DoxyParamCaption}\item[{double}]{gamma}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Procedure to set the gamma value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gamma} & double The value of gamma to be used \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+gammatransf.\+h\end{DoxyCompactItemize}

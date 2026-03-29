@@ -1,0 +1,42 @@
+\doxysection{Transcriptset.\+h}
+\hypertarget{Transcriptset_8h_source}{}\label{Transcriptset_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_TRANSCRIPTSET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_TRANSCRIPTSET\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Transcript.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}ProcessCSV.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ndplaces.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTranscriptSet_a992b33ddced04dbc00a3208927a4aa00}{TranscriptSet}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{classTranscriptSet_a07b7c7bb514dfa9b4142320e12053c20}{default\_chunksize\_for\_TranscriptSet}}=4096;\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classTranscriptSet_a3701c963193f7f84758f8443027604bb}{UnassignedCellCode}}=\textcolor{stringliteral}{"{}UNASSIGNED"{}};\ \ \ }
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{classTranscriptSet_a992b33ddced04dbc00a3208927a4aa00}{TranscriptSet}}(std::string\ tr\_file\_name,\textcolor{keywordtype}{bool}\ check=\textcolor{keyword}{false});}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTranscriptSet_a7f45bf96227081a315210820e47f0628}{Show}}(std::ostream\ \&out,\textcolor{keywordtype}{char}\ sep=\textcolor{charliteral}{','});}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classTranscriptSet_a1511af5905211662d3670c94311eb423}{GetNumTr}}()\ \{\ \textcolor{keywordflow}{return}(tset.size());\ \};}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscriptSet_a9e0c539a3a98e2d667438c91fcc7502f}{GetX}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_a9e0c539a3a98e2d667438c91fcc7502f}{GetX}}());\ \};}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscriptSet_ad2912754060ddcc17a108ca33641ef4d}{GetY}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_ad2912754060ddcc17a108ca33641ef4d}{GetY}}());\ \};}
+\DoxyCodeLine{00052\ \ \ std::string\ \mbox{\hyperlink{classTranscriptSet_ab03f573cb904e914aa6c138f51a1a9f6}{GetFOV}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_ab03f573cb904e914aa6c138f51a1a9f6}{GetFOV}}());\ \};}
+\DoxyCodeLine{00058\ \ \ std::string\ \mbox{\hyperlink{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f}{GetCellId}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f}{GetCellId}}());\ \};}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTranscriptSet_a92cb4b4fa2a2a76dca2b21b8f7df68ae}{InsideCell}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_a57564d04d22fcf68a72e76d946f73f2f}{GetCellId}}()!=\mbox{\hyperlink{classTranscriptSet_a3701c963193f7f84758f8443027604bb}{UnassignedCellCode}});\ \};}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTranscriptSet_aa6a991173d1aa914eea222c013bcda8f}{OverlapNucleus}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_aa6a991173d1aa914eea222c013bcda8f}{OverlapNucleus}}());\ \};}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTranscriptSet_a242dace475ffeaeabce20b8d030dac38}{GetQv}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].\mbox{\hyperlink{classTranscriptSet_a242dace475ffeaeabce20b8d030dac38}{GetQv}}());\ \};}
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTranscriptSet_ada97103ee00f8cad683fae816035f4f5}{GetCW}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].GetCodeword());\ \};}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classTranscriptSet_a4cf19ad73c1fde1458c415e016db4cd5}{GetDNuc}}(\textcolor{keywordtype}{size\_t}\ t)\ \{\ \textcolor{keywordflow}{return}(tset[t].GetNucleusDist());\ \};}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTranscriptSet_a7d3468850e6b854e96f927df756c4cf9}{SaveAsBinaryWithDebug}}(std::string\ fname);}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTranscriptSet_a531e46a25b133dd3b6bd38f968bf9035}{SaveAsBinary}}(std::string\ fname);}
+\DoxyCodeLine{00099\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00100\ \ \ std::vector<Transcript>\ tset;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{bool}\ ValidRegName(\ std::string\ rname\ )\ \{\ \textcolor{keywordflow}{return}(tset[0].ValidRegionName(rname));\ \};}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{void}\ TranscriptSetFromCSV(std::string\ fname);}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ TranscriptSetFromBin(std::string\ fname);}
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{bool}\ CheckTranscriptSet();}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00108\ }
+
+\end{DoxyCode}

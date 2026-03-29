@@ -1,0 +1,37 @@
+\doxysection{imtypes.\+h}
+\hypertarget{imtypes_8h_source}{}\label{imtypes_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_IMTYPES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_IMTYPES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <itkImageFileReader.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <itkImageFileWriter.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <itkTIFFImageIO.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <itkNumericTraits.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <itkPoint.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Planar\ =\ 2;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ }BinPixelType\ =\ \textcolor{keywordtype}{unsigned}\ char;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }ImageBinType\ =\ itk::Image<BinPixelType,\ Planar>;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ }ImageBinWriterType\ =\ itk::ImageFileWriter<ImageBinType>;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ }ImageBinReaderType\ =\ itk::ImageFileReader<ImageBinType>;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }ColPixelType\ =\ itk::RGBPixel<unsigned\ char>;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }ImageColType\ =\ itk::Image<ColPixelType,\ Planar>;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ }ImageColReaderType\ =\ itk::ImageFileReader<ImageColType>;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }ImageColWriterType\ =\ itk::ImageFileWriter<ImageColType>;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{using\ }TIFFIOType\ =\ itk::TIFFImageIO;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ These\ are\ valid\ for\ both\ types\ of\ images,\ since\ geometry\ is\ the\ same}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ }ImageSpType\ =\ ImageBinType::SpacingType;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{using\ }ImagePointType\ =\ ImageBinType::PointType;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{using\ }ImageRegionType\ =\ itk::ImageRegion<Planar>;}
+\DoxyCodeLine{00029\ \textcolor{keyword}{using\ }ImageSizeType\ =\ ImageRegionType::SizeType;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{using\ }ImageIndexType\ =\ ImageRegionType::IndexType;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,249 @@
+\doxysection{auxbin.\+h}
+\hypertarget{auxbin_8h_source}{}\label{auxbin_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ @cond\ DO\_NOT\_DOCUMENT}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ \_AUXBIN\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ \_AUXBIN\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string.h>}\ \textcolor{comment}{//\ To\ use\ memcpy}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ This\ is\ the\ maximum\ length\ allowed\ for\ strings}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_string\_len=254;}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ This\ is\ the\ length\ of\ the\ temporary\ array\ used\ to\ hold\ the\ strings\ before\ being\ written.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Its\ first\ byte\ will\ contain\ the\ string\ length,\ so\ this\ amount\ must\ be\ the\ previous\ one,\ plus\ 1}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tmp\_max\_string\_len=max\_string\_len+1;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ The\ buffer\ size\ for\ output\ buffered\ streams.\ Let's\ say\ 128\ Mb}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ default\_out\_membuf=128;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }BufferedFile}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ BufferedFile();}
+\DoxyCodeLine{00025\ \ \ BufferedFile(\textcolor{keywordtype}{bool}\ debug);}
+\DoxyCodeLine{00026\ \ \ \string~BufferedFile();}
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00028\ \ \ std::string\ filename;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{char}\ *mem;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{size\_t}\ memsize;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{size\_t}\ off;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{bool}\ deb;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }InputBufferedFile:\ \textcolor{keyword}{public}\ BufferedFile}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ InputBufferedFile(std::string\ fname);}
+\DoxyCodeLine{00039\ \ \ InputBufferedFile(std::string\ fname,\textcolor{keywordtype}{bool}\ debug);}
+\DoxyCodeLine{00040\ \ \ \string~InputBufferedFile();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ Special\ function\ to\ read\ strings,\ which\ are\ stored\ in\ memory\ as\ a\ first\ byte,\ indicating\ its\ length\ (from\ 0\ to\ 254)\ followed\ by\ the\ string\ bytes.\ No\ ending\ \(\backslash\)0,\ added\ when\ read.}}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ readb(std::string\ \&s)}
+\DoxyCodeLine{00044\ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ sl;}
+\DoxyCodeLine{00046\ \ \ \ \textcolor{keywordflow}{if}\ (off+1\ <\ memsize)}
+\DoxyCodeLine{00047\ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ sl=mem[off];}
+\DoxyCodeLine{00049\ \ \ \ \ off++;}
+\DoxyCodeLine{00050\ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00052\ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Low\ level\ error\ from\ InputBufferedFile::readb:\ trying\ to\ read\ beyond\ the\ end\ of\ the\ booked\ memory.\(\backslash\)n"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00055\ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \textcolor{keywordflow}{if}\ (off+sl\ <=\ memsize)}
+\DoxyCodeLine{00057\ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{char}\ dummy[tmp\_max\_string\_len];}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i=0;\ i<sl;\ i++)}
+\DoxyCodeLine{00060\ \ \ \ \ \ dummy[i]=mem[off+i];}
+\DoxyCodeLine{00061\ \ \ \ \ off+=sl;}
+\DoxyCodeLine{00062\ \ \ \ \ dummy[sl]=\textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00063\ \ \ \ \ s=std::string(dummy);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00065\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ sl+1\ <<\ \textcolor{stringliteral}{"{}\ bytes\ assigned\ from\ buffer\ for\ a\ string.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00066\ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//\ Function\ to\ read\ any\ other\ fundamental\ data\ type}}
+\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_fundamental<T>::value,\ \textcolor{keywordtype}{void}>::type}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{inline}\ readb(T\ \&v)}
+\DoxyCodeLine{00073\ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \textcolor{comment}{//\ If\ we\ are\ inside\ the\ booked\ memory...}}
+\DoxyCodeLine{00075\ \ \ \ \textcolor{keywordflow}{if}\ (off+\textcolor{keyword}{sizeof}(T)\ <=\ memsize)}
+\DoxyCodeLine{00076\ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ ...\ copy\ as\ many\ bytes\ as\ required\ in\ the\ variable\ to\ be\ filled}}
+\DoxyCodeLine{00078\ \ \ \ \ memcpy(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&v),mem+off,\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ ...\ and\ advance\ the\ memory\ offset.}}
+\DoxyCodeLine{00080\ \ \ \ \ off\ +=\ \textcolor{keyword}{sizeof}(T);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00082\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \textcolor{keyword}{sizeof}(T)\ <<\ \textcolor{stringliteral}{"{}\ bytes\ assigned\ from\ buffer\ for\ a\ "{}}\ <<\ \textcolor{keyword}{typeid}(T).name()\ <<\ \textcolor{stringliteral}{"{}.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00083\ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00085\ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Low\ level\ error\ from\ InputBufferedFile::readb:\ trying\ to\ read\ beyond\ the\ end\ of\ the\ booked\ memory.\(\backslash\)n"{}};}
+\DoxyCodeLine{00087\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00088\ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ Function\ to\ read\ vectors\ of\ any\ fundamental\ data\ type}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_fundamental<T>::value,\ \textcolor{keywordtype}{void}>::type}
+\DoxyCodeLine{00094\ \ \ \textcolor{keyword}{inline}\ readb(std::vector<T>\ \&v)}
+\DoxyCodeLine{00095\ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \textcolor{comment}{//\ First,\ let's\ read\ the\ length\ of\ the\ vector\ (number\ of\ elements)}}
+\DoxyCodeLine{00097\ \ \ \ \textcolor{keywordtype}{size\_t}\ sv;}
+\DoxyCodeLine{00098\ \ \ \ \textcolor{keywordflow}{if}\ (off+\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t})\ <=\ memsize)}
+\DoxyCodeLine{00099\ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ memcpy(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&sv),mem+off,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{00101\ \ \ \ \ v.resize(sv);}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Once\ read,\ advance\ the\ memory\ offset}}
+\DoxyCodeLine{00103\ \ \ \ \ off\ +=\ \textcolor{keyword}{sizeof}(size\_t);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ Now,\ read\ one\ by\ one\ the\ elements\ of\ the\ vector}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (off+sv*\textcolor{keyword}{sizeof}(T)\ <=\ memsize)}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i=0;\ i<sv;\ i++,off+=\textcolor{keyword}{sizeof}(T))}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ memcpy(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&(v[i])),mem+off,\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00109\ \ \ \ \ \ \textcolor{comment}{//\ Advance\ of\ the\ memory\ offset\ has\ been\ done\ by\ the\ loop\ update\ part}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ vector\ of\ "{}}\ <<\ sv\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \textcolor{keyword}{typeid}(T).name()\ <<\ \textcolor{stringliteral}{"{}\ so\ "{}}\ <<\ sv*\textcolor{keyword}{sizeof}(T)+\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t})\ <<\ \textcolor{stringliteral}{"{}\ bytes\ assigned\ from\ buffer.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Low\ level\ error\ from\ InputBufferedFile::readb:\ trying\ to\ read\ beyond\ the\ end\ of\ the\ booked\ memory.\(\backslash\)n"{}};}
+\DoxyCodeLine{00116\ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00120\ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Low\ level\ error\ from\ InputBufferedFile::readb:\ trying\ to\ read\ beyond\ the\ end\ of\ the\ booked\ memory.\(\backslash\)n"{}};}
+\DoxyCodeLine{00122\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00123\ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00127\ \ \ std::ifstream\ f;}
+\DoxyCodeLine{00128\ \};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{class\ }OutputBufferedFile:\ \textcolor{keyword}{public}\ BufferedFile}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00133\ \ \ OutputBufferedFile(std::string\ fname);}
+\DoxyCodeLine{00134\ \ \ OutputBufferedFile(std::string\ fname,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ chunk\_size);}
+\DoxyCodeLine{00135\ \ \ OutputBufferedFile(std::string\ fname,\textcolor{keywordtype}{bool}\ debug);}
+\DoxyCodeLine{00136\ \ \ OutputBufferedFile(std::string\ fname,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ chunk\_size,\textcolor{keywordtype}{bool}\ debug);}
+\DoxyCodeLine{00137\ \ \ \string~OutputBufferedFile();}
+\DoxyCodeLine{00138\ \ \ \textcolor{comment}{//\ Special\ function\ to\ write\ strings,\ which\ are\ stored\ in\ memory\ as\ a\ first\ byte,\ indicating\ its\ length\ (from\ 0\ to\ 254)\ followed\ by\ the\ string\ bytes.\ No\ ending\ \(\backslash\)0\ is\ stored.}}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ writeb(std::string\ \&s)}
+\DoxyCodeLine{00140\ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \textcolor{keywordtype}{size\_t}\ sl=s.length();}
+\DoxyCodeLine{00142\ \ \ \ \textcolor{keywordflow}{if}\ (sl>max\_string\_len)}
+\DoxyCodeLine{00143\ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Low\ level\ error\ from\ OutputBufferedFile::writeb:\ trying\ to\ write\ a\ string\ with\ length\ of\ "{}}\ <<\ sl\ <<\ \textcolor{stringliteral}{"{},\ bigger\ than\ the\ maximum\ allowed,\ which\ is\ "{}}\ <<\ max\_string\_len<<\ std::endl;}
+\DoxyCodeLine{00145\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}The\ offending\ string\ is\ '"{}}\ <<\ s\ <<\ \textcolor{stringliteral}{"{}'\(\backslash\)n"{}};}
+\DoxyCodeLine{00146\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00147\ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \textcolor{comment}{//\ If\ we\ would\ be\ beyond\ the\ end\ of\ the\ chunk...}}
+\DoxyCodeLine{00149\ \ \ \ \textcolor{keywordflow}{if}\ (off+sl\ >\ memsize)}
+\DoxyCodeLine{00150\ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ chunk\ to\ the\ disk\ up\ to\ the\ current\ position:}}
+\DoxyCodeLine{00152\ \ \ \ \ f.write(mem,off);}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ pending\ object\ at\ the\ beginning\ of\ the\ chunk.}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ First,\ a\ byte\ with\ the\ sring\ length...}}
+\DoxyCodeLine{00155\ \ \ \ \ *mem=(\textcolor{keywordtype}{unsigned}\ char)sl;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Then,\ the\ characters\ themselves}}
+\DoxyCodeLine{00157\ \ \ \ \ memcpy(mem+1,s.c\_str(),sl);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00159\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \ off\ <<\ \textcolor{stringliteral}{"{}\ bytes\ of\ string\ written\ to\ reuse\ memory\ chunk.\ Then,\ "{}}\ <<\ sl\ <<\ \textcolor{stringliteral}{"{}\ bytes\ stored.\(\backslash\)n"{}};}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ and\ update\ the\ offset\ to\ the\ string\ length,\ plus\ 1\ to\ account\ for\ the\ first\ byte\ with\ the\ length}}
+\DoxyCodeLine{00161\ \ \ \ \ off\ =\ sl+1;}
+\DoxyCodeLine{00162\ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00164\ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//\ We\ have\ still\ empty\ room\ in\ the\ memory.\ Just\ copy\ the\ characters...}}
+\DoxyCodeLine{00166\ \ \ \ \ *(mem+off)=(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})sl;}
+\DoxyCodeLine{00167\ \ \ \ \ memcpy(mem+off+1,s.c\_str(),sl);}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//\ and\ update\ the\ offset}}
+\DoxyCodeLine{00169\ \ \ \ \ off\ +=\ (sl+1);}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00171\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ sl+1\ <<\ \textcolor{stringliteral}{"{}\ bytes\ of\ string\ stored\ in\ buffer.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00172\ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \};}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \textcolor{comment}{//\ Function\ to\ write\ any\ other\ fundamental\ data\ type}}
+\DoxyCodeLine{00176\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00177\ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_fundamental<T>::value,\ \textcolor{keywordtype}{void}>::type}
+\DoxyCodeLine{00178\ \ \ \textcolor{keyword}{inline}\ writeb(T\ \&v)}
+\DoxyCodeLine{00179\ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \textcolor{comment}{//\ If\ we\ would\ be\ beyond\ the\ end\ of\ the\ chunk...}}
+\DoxyCodeLine{00181\ \ \ \ \textcolor{keywordflow}{if}\ (off+\textcolor{keyword}{sizeof}(T)\ >\ memsize)}
+\DoxyCodeLine{00182\ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ chunk\ to\ the\ disk\ up\ to\ the\ current\ position:}}
+\DoxyCodeLine{00184\ \ \ \ \ f.write(mem,off);}
+\DoxyCodeLine{00185\ \ \ \ \ f.flush();}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ pending\ object\ at\ the\ beginning\ of\ the\ chunk...}}
+\DoxyCodeLine{00187\ \ \ \ \ memcpy(mem,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&v),\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00189\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \ off\ <<\ \textcolor{stringliteral}{"{}\ bytes\ written\ to\ reuse\ memory\ chunk.\ Then,\ "{}}\ <<\ \textcolor{keyword}{sizeof}(T)\ <<\ \textcolor{stringliteral}{"{}\ bytes\ stored.\(\backslash\)n"{}};}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ and\ update\ the\ offset\ by\ initialization}}
+\DoxyCodeLine{00191\ \ \ \ \ off\ =\ \textcolor{keyword}{sizeof}(T);}
+\DoxyCodeLine{00192\ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00194\ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ We\ have\ still\ empty\ room\ in\ the\ memory.\ Just\ copy\ the\ object...}}
+\DoxyCodeLine{00196\ \ \ \ \ memcpy(mem+off,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&v),\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ and\ update\ the\ offset\ by\ increment}}
+\DoxyCodeLine{00198\ \ \ \ \ off\ +=\ \textcolor{keyword}{sizeof}(T);}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00200\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \textcolor{keyword}{sizeof}(T)\ <<\ \textcolor{stringliteral}{"{}\ bytes\ stored\ in\ buffer.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00201\ \ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \textcolor{comment}{//\ Function\ to\ write\ vectors\ of\ any\ fundamental\ data\ type}}
+\DoxyCodeLine{00205\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00206\ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_fundamental<T>::value,\ \textcolor{keywordtype}{void}>::type}
+\DoxyCodeLine{00207\ \ \ \textcolor{keyword}{inline}\ writeb(std::vector<T>\ \&v)}
+\DoxyCodeLine{00208\ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \textcolor{keywordtype}{size\_t}\ sv=v.size();}
+\DoxyCodeLine{00210\ \ \ \ \textcolor{comment}{//\ Total\ number\ of\ bytes\ we\ have\ to\ write:\ all\ the\ vector,\ plus\ a\ size\_t\ to\ specify\ its\ length}}
+\DoxyCodeLine{00211\ \ \ \ \textcolor{keywordtype}{size\_t}\ total\_size=sv*\textcolor{keyword}{sizeof}(T)+\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{00212\ \ \ \ \textcolor{comment}{//\ If\ we\ would\ be\ beyond\ the\ end\ of\ the\ chunk...}}
+\DoxyCodeLine{00213\ \ \ \ \textcolor{keywordflow}{if}\ (off+total\_size\ >\ memsize)}
+\DoxyCodeLine{00214\ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ chunk\ to\ the\ disk\ up\ to\ the\ current\ position:}}
+\DoxyCodeLine{00216\ \ \ \ \ f.write(mem,off);}
+\DoxyCodeLine{00217\ \ \ \ \ f.flush();}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ pending\ vector\ at\ the\ beginning\ of\ the\ chunk...}}
+\DoxyCodeLine{00219\ \ \ \ \ memcpy(mem,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&sv),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ ...\ and\ update\ the\ offset\ by\ initialization}}
+\DoxyCodeLine{00221\ \ \ \ \ off\ =\ \textcolor{keyword}{sizeof}(size\_t);}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i=0;\ i<sv;\ i++,\ off+=\textcolor{keyword}{sizeof}(T))}
+\DoxyCodeLine{00223\ \ \ \ \ \ memcpy(mem+off,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&(v[i])),\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ off\ has\ already\ been\ incremented\ by\ the\ loop\ update}}
+\DoxyCodeLine{00225\ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00227\ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ We\ have\ still\ empty\ room\ in\ the\ memory.\ Just\ copy\ the\ vector...}}
+\DoxyCodeLine{00229\ \ \ \ \ memcpy(mem+off,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&sv),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//\ ...\ and\ update\ the\ offset\ by\ increment}}
+\DoxyCodeLine{00231\ \ \ \ \ off\ +=\ \textcolor{keyword}{sizeof}(size\_t);}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i=0;\ i<sv;\ i++,\ off+=\textcolor{keyword}{sizeof}(T))}
+\DoxyCodeLine{00233\ \ \ \ \ \ memcpy(mem+off,\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&(v[i])),\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{//\ off\ has\ already\ been\ incremented\ by\ the\ loop\ update}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{if}\ (deb)}
+\DoxyCodeLine{00236\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}:\ vector\ of\ "{}}\ <<\ total\_size\ <<\ \textcolor{stringliteral}{"{}\ bytes\ ("{}}\ <<\ sv\ <<\ \textcolor{stringliteral}{"{}\ elements\ of\ "{}}\ <<\ \textcolor{keyword}{sizeof}(T)\ <<\ \textcolor{stringliteral}{"{}\ bytes\ each)\ stored\ in\ buffer.\ Current\ offset:\ "{}}\ <<\ off\ <<\ std::endl;}
+\DoxyCodeLine{00237\ \ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \};}
+\DoxyCodeLine{00239\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00240\ \ \ std::ofstream\ f;}
+\DoxyCodeLine{00241\ \};}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ @endcond}}
+
+\end{DoxyCode}
