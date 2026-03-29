@@ -2,7 +2,7 @@
 Softfware to apply the D3AIST (Data-Driven Detection of Atypical Interactions in Spatial Transcriptomics) methodology to spatial transcriptomics data
 * The software takes histopathological images and their spatial transcriptomics data
 * Currently, it works with Visium HD data format but it could be in principle applied to any SPT data
-* The software has been tested with publicly available GSE280318 dataset https://www.ncbi.xyz/geo/query/acc.cgi?acc=GSE280318
+* The software has been tested with publicly available GSE280318 dataset https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280318
 * The basic reference is Oliveira et al.: "High-definition spatial transcriptomic profiling of immune cell populations in colorectal cancer", Nature Genetics, vol. 57(6), pp. 1512-1523, June 2025.
 
 See detailed documentation at the doc directory.
