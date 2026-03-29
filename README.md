@@ -28,7 +28,8 @@ cd build
 ccmake ../
 \
 make
-\ 
+\
+\
 an then, as root or with sudo,
 \ 
 make install
