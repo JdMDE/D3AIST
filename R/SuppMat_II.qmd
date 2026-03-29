@@ -1,0 +1,454 @@
+---  
+title:   "Supplementary material 2: Statistical analysis."  
+author:  "T. Leon, J. Domingo, A.L. Riffo-Campos and G. Ayala"  
+date:  "`r   Sys.Date()`"  
+address: Departamento de Estadística e I.O. Universidad de Valencia  
+format:   
+   pdf:  
+    toc: true
+    number-sections: true
+    colorlinks: true  
+references:
+  - id: Oliveira2025
+    type: article-journal
+    title: "High-definition spatial transcriptomic profiling of immune cell populations in colorectal cancer"
+    author:
+      - family: Oliveira
+        given: Michelli Faria de
+      - family: Romero
+        given: Juan Pablo
+      - family: Chung
+        given: Meii
+      - family: Williams
+        given: Stephen R.
+      - family: Gottscho
+        given: Andrew D.
+      - family: Gupta
+        given: Anushka
+      - family: Pilipauskas
+        given: Susan E.
+      - family: Mohabbat
+        given: Seayar
+      - family: Raman
+        given: Nandhini
+      - family: Sukovich
+        given: David J.
+      - family: Patterson
+        given: David M.
+      - family: de Oliveira
+        given: Michelli Faria
+      - family: Taylor
+        given: Sarah E. B.
+    issued:
+      year: 2025
+      month: 6
+      day: 1
+    container-title: "Nature Genetics"
+    volume: "57"
+    number: "6"
+    page: "1512–1523"
+    ISSN: "1546-1718"
+    DOI: "10.1038/s41588-025-02193-3"
+    URL: "https://doi.org/10.1038/s41588-025-02193-3"
+    
+  - id: baddeley2005spatstat
+    type: article-journal
+    title: "spatstat: An R Package for Analyzing Spatial Point Patterns"
+    author:
+      - family: Baddeley
+        given: A.
+      - family: Turner
+        given: R.
+    container-title: "Journal of Statistical Software"
+    volume: "12"
+    number: "6"
+    page: "1–42"
+    issued:
+      year: 2005
+    DOI: "10.18637/jss.v012.i06"
+    URL: "https://doi.org/10.18637/jss.v012.i06"
+
+
+---  
+
+
+# Packages and data sets
+
+## Loading the required packages  
+
+```{r}
+#| label: supmat1
+
+pacman::p_load(spatstat,igraph,combinat,parallel)
+source("functions_srt.R")
+
+```
+
+## Creating the point pattern  
+
+### Reading transcription event coordinates
+
+The analysis is performed on different subimages delineated by an expert.
+Specifically, we focused on the same expert-defined tumor microenvironment
+regions previously analyzed in @Oliveira2025 in their Figure 7, where Xenium
+in situ profiling was used to confirm the existence and spatial localization
+of macrophage subtypes and clonally expanded T cells.
+Images come from three patients (1, 2, and 5): areas c and e for patient 1,
+areas d and f for patient 2, and area h for patient 5.
+
+The first step is to convert the transcription event files generated as
+described in Supplementary Material 1 into local spatial point patterns
+handled by R (format .rda).
+
+```{r}  
+#| label: supmat2  
+#| eval: false
+
+for(i in c(1,2,5)){
+    switch(as.character(i), 
+           "1" = {areasn = c(0:4,"c","e")},
+           "2" = {areasn = c(0:2,"d","f")},
+           "5" = {areasn = c(0:2,"h")}
+           ) 
+    for(j in areasn){
+        cat("Case ",i," Area ",j,"\n")
+        dirbase = paste0("~/Nextcloud/SPATIAL_TRANSCRIPTOMICS/MARKED_RESULTS_AREAS_C",
+                         i,"/C",i,"_Area",j,"/")
+        x = do.ppp(dirbase=dirbase,case=i,ff=1,min.n = 10)
+        save(x,file=paste0("../data/local/x_l_case_",i,"_area_",j,"_ff_",1,
+                           ".rda"))
+    }
+}
+
+```
+
+
+# Statistical Analysis 
+
+## Data-driven detection of atypical spatial interactions 
+
+1.  For each pair of genes $(i,j)$, three interaction statistics are estimated:
+the cross-type $K$-function ($K_{ij}(r)$), the cross-type $L$-function ($L_{ij}(r)$), and 
+the cross-type pair correlation function ($g_{ij}(r)$).
+
+2.  For each interaction statistic, a comparison envelope for the pair $(i,j)$ is constructed
+from the corresponding functions of all other gene pairs, excluding $(i,j)$ itself.
+
+3. If the observed statistic for the pair $(i,j)$ partially falls outside the comparison 
+envelope, the interaction is \emph{flagged as atypical}. Values above the envelope indicate 
+spatial attraction or aggregation, values below indicate spatial repulsion or inhibition, 
+and values within the envelope suggest no meaningful departure from the typical patterns 
+observed across the system.
+
+4. These atypical interactions are then used to construct gene--gene graphs, in which the 
+width of each edge is set proportional to the number of distance intervals for which the 
+corresponding interaction lies outside its comparison envelope.
+
+5. The spatial distances at which the observed interaction statistics fall outside the 
+envelopes are also identified.
+
+## Estimating cross functions  
+Estimates of the cross-type summary functions are obtained from the observed point patterns
+using the Kcross, Lcross, and pcfcross functions from the R package spatstat
+(@baddeley2005spatstat), and the results are saved.
+
+```{r}
+#| label: supmat3
+#| eval: false
+
+detectCores()
+rvalues = seq(0,152,2)
+ff = 1
+for(i in c(1,2,5)){
+    switch(as.character(i),
+           "1" = {areasn = c(0:4,"c","e")},
+           "2" = {areasn = c(0:2,"d","f")},
+           "5" = {areasn = c(0:2,"h")}
+           )
+    for(j in areasn){
+        cat("Case ",i," Area ",j,"\n")
+        file_x = paste0("../data/local/x_l_case_",i,"_area_",j,"_ff_",1,".rda")
+        load(file_x)
+        sel = which(!is.na(x))
+        pairs1 = t(combn(sel,2))
+        x1 = x[sel]
+        X = do.call(superimpose, x1)
+        pairs11 =  t(combn(length(sel),2))
+        kc.l  = mclapply(1:nrow(pairs11),function(k){
+           ## cat("k ",k,"\n")
+            Kcross(X,i=levels(marks(X))[pairs11[k,1]],
+                   j=levels(marks(X))[pairs11[k,2]],r=rvalues,
+                   correction="border")
+        })
+        Lc.l  = mclapply(1:nrow(pairs11),function(k){
+            ## cat("k ",k,"\n")
+            Lcross(X,i=levels(marks(X))[pairs11[k,1]],
+                   j=levels(marks(X))[pairs11[k,2]],r=rvalues,
+                   correction="border")
+        })
+        pcf.l = mclapply(1:nrow(pairs11),function(k){
+            ## cat("k ",k,"\n")
+            pcfcross(X,i=levels(marks(X))[pairs11[k,1]],
+                     j=levels(marks(X))[pairs11[k,2]],r=rvalues,
+                     correction="iso")
+        })
+        kc = matrix(unlist(lapply(kc.l,function(x) x$border)),
+                    ncol=length(rvalues),byrow=TRUE)
+        Lc = matrix(unlist(lapply(Lc.l,function(x) x$border)),
+                    ncol=length(rvalues),byrow=TRUE)
+        pcf = matrix(unlist(lapply(pcf.l,function(x) x$iso)),
+                     ncol=length(rvalues),byrow=TRUE)
+        save(kc,file=paste0("results/kc_l_",i,"_ff_",ff,"_area_",j,
+                            ".rda"))
+        save(Lc,file=paste0("results/Lc_l_",i,"_ff_",ff,"_area_",j,
+                            ".rda"))
+        save(pcf,file=paste0("results/pcf_l_",i,"_ff_",ff,"_area_",j,
+                             ".rda"))
+    }
+}
+
+```
+
+## Finding atypical spatial interactions
+
+For each interaction statistic, a reference envelope for the pair $(i,j)$  is generated 
+using the corresponding summary functions from all other gene pairs, excluding the pair $(i,j)$.  
+
+If the observed statistic for $(i,j)$ extends partially beyond this reference envelope, 
+the interaction is marked as atypical.  
+
+Additionally, we record on which side of the envelope the statistic exits (above or below),
+as this directionality provides further information about the nature of the deviation.  
+
+```{r}
+#| label: supmat4
+#| eval: false
+
+ff = 1
+for(desc in c("kc","Lc","pcf")){
+    for(i in c(1,2,5)){
+        switch(as.character(i),
+               "1" = {areasn = c(0:4,"c","e")},
+               "2" = {areasn = c(0:2,"d","f")},
+               "5" = {areasn = c(0:2,"h")}
+               )
+       for(j in areasn){
+            cat("Case ",i," Area ",j,"\n")
+            file_desc = paste0("results/local/",desc,"_l_",i,"_ff_",ff,"_area_",j,".rda")
+            load(file_desc)
+             switch(desc,
+               "kc" = {sig = oneRow(x=kc,method="all")},
+               "Lc" = {sig = oneRow(x=Lc,method="all")},
+               "pcf" = {sig = oneRow(x=pcf,method="all")}
+               )
+            file_sig = paste0("results/local/sig_",desc,"_l_",i,"_ff_",ff,"_area_",j,".rda")
+            save(sig,file=file_sig)
+        }
+    }
+}
+
+
+
+## side  
+ff = 1
+for(desc in c("pcf")){
+    for(i in c(1,2,5)){
+        switch(as.character(i),
+               "1" = {areasn = c(0:4,"c","e")},
+               "2" = {areasn = c(0:2,"d","f")},
+               "5" = {areasn = c(0:2,"h")}
+               )
+        for(j in areasn){
+            cat("Case ",i," fraction ", ff," area ",j,"\n")
+            file_desc = paste0("results/local/",desc,"_l_",i,"_ff_",ff,"_area_",j,".rda")
+            file_sig = paste0("results/local/sig_",desc,"_l_",i,"_ff_",ff,"_area_",j,".rda")
+            load(file_desc)
+            load(file_sig)
+            switch(desc,
+                   "kc" = {side = oneRowSide(x=kc,sig=sig)},
+                   "Lc" = {side = oneRowSide(x=Lc,sig=sig)},
+                   "pcf" = {side = oneRowSide(x=pcf,sig=sig)}
+                   )
+            file_sig_side = paste0("results/local/sig_side_",desc,"_l_",i,"_ff_",ff,"_area_",j,".rda")
+            save(side,file=file_sig_side)
+        }
+    }
+}
+ 
+
+```
+
+
+## Construction of graphs from genes with atypical interactions
+
+
+### Mapping ENSEMBL IDs to gene symbols
+
+First, we establish the correspondence between Ensembl identifiers and gene symbols to be used in the graphs.
+
+```{r}
+#| label: supmat5
+#| eval: false
+
+genes = read.csv("GSE280314_gene_panel.csv",header=TRUE,sep="\t")
+ensembl = genes$id[1:100]
+hgnc_symbol  = genes$name[1:100]
+save(ensembl,hgnc_symbol,file="annotation.rda")
+
+``` 
+
+### Graphs with local interactions  
+
+Next, we generate the graphs for local point patterns. 
+
+```{r}
+#| label: supmat6
+#| eval: false
+
+source("functions_srt.R")
+
+ff = 1
+for(desc in c("kc","Lc")){
+    for(i in c(1,2,5)){
+        switch(as.character(i), 
+               "1" = {areasn = c(0:4,"c","e")},
+               "2" = {areasn = c(0:2,"d","f")},
+               "5" = {areasn = c(0:2,"h")}
+               ) 
+        for(j in areasn){
+            cat("desc ",desc,"Case ",i," Area ",j,"\n")
+            file_x = paste0("../data/local/x_l_case_",i,"_area_",j,"_ff_",1,".rda")
+            file_sig = paste0("results/local/sig_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                              ".rda")
+            file_sig_side = paste0("results/local/sig_side_",desc,"_l_",i,"_ff_",ff,
+                                   "_area_",j,".rda")
+            file_annotation = "annotation.rda"
+            g = do_graph(file_x,file_sig,file_sig_side,file_annotation)
+            file_plot=paste0("figures/local/graph_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                             ".png")
+            png(file_plot)
+            plot(g)
+            dev.off()
+            file_graph = paste0("figures/local/graph_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                            ".graph")
+            save(g,file=file_graph)
+            metag = data.frame(V1 = E(g)$label1,V2 =  E(g)$label2,width = E(g)$width,
+                                   out = factor(E(g)$out,levels=1:2,labels=c("low","up")))
+            file_metag = paste0("figures/local/metagraph_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                                    ".csv")
+            write.csv(metag,file=file_metag)
+        }
+    }
+}
+
+
+```
+
+
+## Envelopes  
+
+### Intervals where the descriptive is out the envelopes  
+
+
+```{r}
+#| label: supmat7
+#| eval: false
+
+ff = 1
+file_annotation ="annotation.rda"
+load(file_annotation)
+df_all = NULL
+for(desc in c("kc","Lc")){
+    for(i in c(1,2,5)){
+        switch(as.character(i), 
+               "1" = {areasn = c(0:4,"c","e")},
+               "2" = {areasn = c(0:2,"d","f")},
+               "5" = {areasn = c(0:2,"h")}
+               ) 
+        for(j in areasn){
+            cat("desc ",desc,"Case ",i," Area ",j,"\n")
+            file_x = paste0("../data/local/x_l_case_",i,"_area_",j,"_ff_",1,".rda")
+            load(file_x)
+            sel = which(!is.na(x))
+            pairs1 = t(combn(sel,2))
+            file_sig = paste0("results/local/sig_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                              ".rda")
+            load(file_sig)
+            pairs1 = pairs1[sig,]
+            sel1 = sort(unique(c(pairs1[,1],pairs1[,2])))
+            file_sig_side = paste0("results/local/sig_side_",desc,"_l_",i,"_ff_",ff,
+                                   "_area_",j,".rda")
+            load(file_sig_side)
+            file_range =paste0("results/local/ranges_",desc,"_l_",i,"_ff_",ff,"_area_",j,
+                             ".csv")
+            df = data.frame(desc= rep(desc,nrow(pairs1)),
+                            case = rep(i,nrow(pairs1)),
+                            window = rep(j,nrow(pairs1)),
+                            gene1 = hgnc_symbol[pairs1[,1]],
+                            gene2 = hgnc_symbol[pairs1[,2]],
+                            lower = apply(side,1,function(u) min(which(u !=0))),
+                            upper = apply(side,1,function(u) max(which(u !=0))))
+            df_all = rbind(df_all,df)
+            save(df,file = file_range)
+        }
+    }
+}
+save(df_all,file = "results/local/df_all.rda")
+
+```
+
+## Envelopes  
+
+```{r}
+#| label: supmat8
+#| eval: false
+load("results/local/df_all.rda")
+df_all
+```
+
+
+### Local interactions  
+
+```{r}
+#| label: supmat9
+#| eval: false
+ff = 1
+
+i=1;j="c";ff=1;desc="kc";genes=c("CXCL13","CXCL10");dir_figures ="figures/local/";
+           file_annotation="annotation.rda"
+
+p = do_env(i=1,j="c",ff=1,desc="kc",genes=c("CXCL13","CXCL10"),dir_figures ="figures/local/",
+           file_annotation="annotation.rda")
+
+do_env(i=1,j="e",ff=1,desc="kc",genes=c("SPP1","CHI3L1"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=1,j="e",ff=1,desc="kc",genes=c("SPP1","MMP9"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=1,j="e",ff=1,desc="kc",genes=c("MZB1","MUC5B"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=1,j="e",ff=1,desc="kc",genes=c("SPP1","MMP3"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=2,j="d",ff=1,desc="kc",genes=c("CHI3L1","REG3A"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=2,j="d",ff=1,desc="kc",genes=c("SPP1","COMP"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=2,j="f",ff=1,desc="kc",genes=c("CHI3L1","MMP12"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=2,j="f",ff=1,desc="kc",genes=c("CHI3L1","COMP"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=5,j="h",ff=1,desc="kc",genes=c("CXCL9","IDO1"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+do_env(i=5,j="h",ff=1,desc="kc",genes=c("CXCL9","GREM1"),dir_figures ="figures/local/",
+       file_annotation="annotation.rda")
+
+
+``` 
